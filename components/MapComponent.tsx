@@ -15,12 +15,12 @@ const geoUrl =
   "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 // Coordinates for markers (longitude, latitude)
-const headquarters = [-86.8, 32.8]; // Alabama, USA
-const europeNode = [10.0, 50.0]; // Central Europe
-const asiaNode = [100.0, 35.0]; // Central Asia
-const africaNode = [20.0, 0.0]; // Central Africa
-const southAmericaNode = [-60.0, -20.0]; // South America
-const australiaNode = [135.0, -25.0]; // Australia
+const headquarters: [number, number] = [-86.8, 32.8]; // Alabama, USA
+const europeNode: [number, number] = [10.0, 50.0]; // Central Europe
+const asiaNode: [number, number] = [100.0, 35.0]; // Central Asia
+const africaNode: [number, number] = [20.0, 0.0]; // Central Africa
+const southAmericaNode: [number, number] = [-60.0, -20.0]; // South America
+const australiaNode: [number, number] = [135.0, -25.0]; // Australia
 
 // Animated Line Component - Must be inside ComposableMap
 // Creates eastward routes (all lines go to the right, no wrapping)
@@ -33,10 +33,10 @@ function AnimatedLine({
   to: [number, number];
   delay?: number;
 }) {
-  try {
-    const { path } = useMapContext();
+  const { path } = useMapContext();
 
-    // Normalize coordinates to ensure eastward travel (to the right)
+  // Normalize coordinates to ensure eastward travel (to the right)
+  try {
     let fromLon = from[0];
     let toLon = to[0];
 
@@ -142,7 +142,7 @@ export default function MapComponent() {
       className="w-full h-full"
     >
       <Geographies geography={geoUrl}>
-        {({ geographies }) =>
+        {({ geographies }: { geographies: { rsmKey: string }[] }) =>
           geographies.map((geo) => (
             <Geography
               key={geo.rsmKey}

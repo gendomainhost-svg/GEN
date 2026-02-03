@@ -71,6 +71,20 @@ npm run build
 npm start
 ```
 
+## Deploy to Cloudflare Pages
+
+The site is built as a **static export** so it runs on Cloudflare Pages without a Node server.
+
+1. Connect your GitHub repo (e.g. `gendomainhost-svg/GEN`) to Cloudflare Pages.
+2. Set **Build configuration**:
+   - **Framework preset:** None (or "Next.js (Static HTML Export)" if available)
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+3. Set **Environment variables** (if any): none required.
+4. Deploy. The site will be served from the `out` folder.
+
+**Note:** The first load is optimized: the map loads lazily and images use unoptimized static assets for compatibility with static hosting.
+
 ## License
 
 © 2024 Global Efficiency Network. All rights reserved.

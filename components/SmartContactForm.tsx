@@ -19,7 +19,7 @@ import Section from "./Section";
 // Form Schemas
 const step1Schema = z.object({
   inquiryType: z.enum(["training", "consulting", "partnership"], {
-    required_error: "Please select an option",
+    message: "Please select an option",
   }),
 });
 
