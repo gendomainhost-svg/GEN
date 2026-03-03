@@ -68,7 +68,7 @@ export default function Hero() {
               src={heroImages[currentImageIndex]}
               alt=""
               fill
-              className="object-cover"
+              className="object-cover brightness-110"
               priority
               sizes="100vw"
             />
@@ -76,8 +76,8 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-primary-900/75 pointer-events-none" />
+      {/* Overlay for text readability (lighter to brighten photos) */}
+      <div className="absolute inset-0 bg-primary-900/55 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
