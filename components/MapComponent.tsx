@@ -82,7 +82,7 @@ function AnimatedLine({
     return (
       <motion.path
         d={pathD}
-        stroke="#B45309"
+        stroke="#991B1B"
         strokeWidth={2}
         fill="none"
         strokeDasharray="5,5"
@@ -123,7 +123,7 @@ function AnimatedLine({
       <Line
         from={from}
         to={to}
-        stroke="#B45309"
+        stroke="#991B1B"
         strokeWidth={2}
         strokeDasharray="5,5"
         opacity={0.6}
@@ -195,7 +195,7 @@ export default function MapComponent() {
           {/* Pulsing circle */}
           <motion.circle
             r={8}
-            fill="#B45309"
+            fill="#991B1B"
             animate={{
               scale: [1, 1.5, 1],
               opacity: [1, 0.5, 1],
@@ -206,7 +206,7 @@ export default function MapComponent() {
               ease: "easeInOut",
             }}
           />
-          <circle r={4} fill="#F59E0B" />
+          <circle r={4} fill="#DC2626" />
           <circle r={2} fill="#FFFBEB" />
         </motion.g>
       </Marker>
@@ -216,7 +216,7 @@ export default function MapComponent() {
       <Marker coordinates={europeNode}>
         <motion.circle
           r={4}
-          fill="#B45309"
+          fill="#991B1B"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -228,7 +228,7 @@ export default function MapComponent() {
       <Marker coordinates={asiaNode}>
         <motion.circle
           r={4}
-          fill="#B45309"
+          fill="#991B1B"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -240,7 +240,7 @@ export default function MapComponent() {
       <Marker coordinates={africaNode}>
         <motion.circle
           r={4}
-          fill="#B45309"
+          fill="#991B1B"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -252,7 +252,7 @@ export default function MapComponent() {
       <Marker coordinates={southAmericaNode}>
         <motion.circle
           r={4}
-          fill="#B45309"
+          fill="#991B1B"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -264,7 +264,7 @@ export default function MapComponent() {
       <Marker coordinates={australiaNode}>
         <motion.circle
           r={4}
-          fill="#B45309"
+          fill="#991B1B"
           initial={{ opacity: 0, scale: 0 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
