@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Calendar, FileText, GraduationCap, Briefcase, Eye } from "lucide-react";
+import { MapPin, FileText, GraduationCap, Briefcase, Eye, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import Section from "./Section";
 
 type ProgramType = "All" | "Executive Training" | "Custom/Private" | "Fellowships" | "Study Tours";
@@ -80,13 +81,19 @@ const mockPrograms: Program[] = [
   },
 ];
 
-export default function ProgramCatalog() {
+interface ProgramCatalogProps {
+  limit?: number;
+}
+
+export default function ProgramCatalog({ limit }: ProgramCatalogProps) {
   const [activeFilter, setActiveFilter] = useState<ProgramType>("All");
 
-  const filteredPrograms =
+  const filtered =
     activeFilter === "All"
       ? mockPrograms
       : mockPrograms.filter((program) => program.category === activeFilter);
+  const filteredPrograms = limit ? filtered.slice(0, limit) : filtered;
+  const showViewAll = limit != null && filtered.length > limit;
 
   const filters: ProgramType[] = [
     "All",
@@ -105,12 +112,11 @@ export default function ProgramCatalog() {
         transition={{ duration: 0.6 }}
         className="text-center mb-16"
       >
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900 mb-4">
-          Program Catalog
+        <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-2">
+          Programs
         </h2>
-        <p className="text-xl text-secondary-DEFAULT max-w-3xl mx-auto">
-          Explore GEN's comprehensive range of learning opportunities designed
-          for leaders and institutions
+        <p className="text-lg text-secondary-DEFAULT max-w-2xl mx-auto">
+          Learning opportunities for leaders and institutions.
         </p>
       </motion.div>
 
@@ -205,6 +211,23 @@ export default function ProgramCatalog() {
           <p className="text-secondary-DEFAULT text-lg">
             No programs found in this category.
           </p>
+        </motion.div>
+      )}
+
+      {showViewAll && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-10"
+        >
+          <Link
+            href="/programs"
+            className="inline-flex items-center bg-primary-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-800 transition-all min-h-[44px]"
+          >
+            View all programs
+            <ArrowRight className="ml-2" size={20} />
+          </Link>
         </motion.div>
       )}
     </Section>

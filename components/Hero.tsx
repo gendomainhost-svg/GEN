@@ -1,10 +1,30 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Briefcase } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
+const heroImages = [
+  "/images/Gemini_Generated_Image_4tio8o4tio8o4tio.png",
+  "/images/Gemini_Generated_Image_58ix8t58ix8t58ix.png",
+  "/images/Gemini_Generated_Image_7dgcel7dgcel7dgc.png",
+  "/images/Gemini_Generated_Image_ecocpeecocpeecoc.png",
+  "/images/Gemini_Generated_Image_gg0zeogg0zeogg0z.png",
+  "/images/Gemini_Generated_Image_maxnbrmaxnbrmaxn.png",
+];
 
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,74 +53,31 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-900"
     >
-      {/* Background Network Visualization */}
-      <div className="absolute inset-0 opacity-20">
-        <svg
-          className="w-full h-full"
-          viewBox="0 0 1200 800"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* World Map Outline */}
-          <path
-            d="M200 300 Q300 250 400 300 T600 300 T800 300 T1000 300"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="text-accent-500"
-          />
-          <path
-            d="M200 500 Q300 450 400 500 T600 500 T800 500 T1000 500"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="text-accent-500"
-          />
-          {/* Connecting Nodes */}
-          {[200, 400, 600, 800, 1000].map((x, i) => (
-            <g key={i}>
-              <circle
-                cx={x}
-                cy={300}
-                r="8"
-                fill="currentColor"
-                className="text-accent-500"
-              >
-                <animate
-                  attributeName="r"
-                  values="8;12;8"
-                  dur="3s"
-                  repeatCount="indefinite"
-                  begin={`${i * 0.5}s`}
-                />
-              </circle>
-              <circle
-                cx={x}
-                cy={500}
-                r="8"
-                fill="currentColor"
-                className="text-accent-500"
-              >
-                <animate
-                  attributeName="r"
-                  values="8;12;8"
-                  dur="3s"
-                  repeatCount="indefinite"
-                  begin={`${i * 0.5 + 1}s`}
-                />
-              </circle>
-              <line
-                x1={x}
-                y1={300}
-                x2={x}
-                y2={500}
-                stroke="currentColor"
-                strokeWidth="1"
-                className="text-accent-500/30"
-              />
-            </g>
-          ))}
-        </svg>
+      {/* Photo background */}
+      <div className="absolute inset-0">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroImages[currentImageIndex]}
+              alt=""
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-primary-900/75 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
@@ -128,13 +105,8 @@ export default function Hero() {
             variants={itemVariants}
             className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-3xl"
           >
-            Global Efficiency Network (GEN) is a U.S.-based organization that
-            designs and delivers high-standard capacity-building, consulting,
-            and experiential learning programs for institutions and
-            professionals worldwide. Headquartered in Alabama, GEN leverages the
-            depth, innovation, and operational excellence of the United States
-            to help organizations strengthen leadership, efficiency, and service
-            delivery.
+            U.S.-based capacity-building, consulting, and experiential learning
+            for institutions worldwide. Headquartered in Alabama.
           </motion.p>
 
           <motion.div
@@ -152,7 +124,7 @@ export default function Hero() {
               />
             </Link>
             <Link
-              href="#consulting"
+              href="/consulting"
               className="group relative bg-transparent border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-md font-semibold text-lg transition-all duration-300 hover:bg-white/10 flex items-center justify-center min-h-[44px]"
             >
               <Briefcase className="mr-2" size={20} />
@@ -161,10 +133,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Gradient Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-900/50 via-primary-900/30 to-primary-900 pointer-events-none" />
     </section>
   );
 }
-

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe2, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Section from "./Section";
@@ -34,63 +34,29 @@ export default function GlobalReach() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-10"
       >
-        <h2 className="font-serif text-4xl md:text-5xl font-bold mb-4">
+        <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">
           A Hub-and-Network Model
         </h2>
-        <p className="text-xl text-white/90 max-w-3xl mx-auto">
-          Combining a lean core team in the US with a global network of partner
-          institutions and experts
+        <p className="text-lg text-white/90 max-w-2xl mx-auto">
+          Lean US core with a global network of partner institutions and experts.
         </p>
       </motion.div>
 
       <div className="relative max-w-6xl mx-auto">
-        {/* World Map - Lazy loaded */}
-        <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] bg-primary-800 rounded-xl overflow-hidden">
+        <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] bg-primary-800 rounded-xl overflow-hidden">
           <MapComponent />
         </div>
 
-        {/* Stats or Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12"
+          className="text-center text-white/80 mt-8 text-sm md:text-base"
         >
-          <div className="text-center">
-            <div className="flex justify-center mb-3">
-              <Globe2 className="text-accent-500" size={32} />
-            </div>
-            <h3 className="font-serif text-2xl font-bold mb-2">Global Network</h3>
-            <p className="text-white/70">
-              Partner institutions across continents
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="flex justify-center mb-3">
-              <Globe2 className="text-accent-500" size={32} />
-            </div>
-            <h3 className="font-serif text-2xl font-bold mb-2">
-              Knowledge Exchange
-            </h3>
-            <p className="text-white/70">
-              Continuous learning and collaboration
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="flex justify-center mb-3">
-              <Globe2 className="text-accent-500" size={32} />
-            </div>
-            <h3 className="font-serif text-2xl font-bold mb-2">
-              Local Expertise
-            </h3>
-            <p className="text-white/70">
-              Contextualized solutions for each region
-            </p>
-          </div>
-        </motion.div>
+          Global Network · Knowledge Exchange · Local Expertise
+        </motion.p>
       </div>
     </Section>
   );

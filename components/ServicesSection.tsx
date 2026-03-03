@@ -17,55 +17,49 @@ const services = [
   {
     id: 1,
     title: "Training & Executive Development",
-    description:
-      "Design and deliver immersive training and executive development programs for institutions and professionals worldwide.",
+    description: "Immersive programs for institutions and professionals worldwide.",
     icon: GraduationCap,
-    size: "large",
+    size: "large" as const,
     highlight: false,
   },
   {
     id: 2,
     title: "Institutional Consulting",
-    description:
-      "Provide institutional consulting and performance advisory services focused on strengthening efficiency and service delivery.",
+    description: "Advisory services for efficiency and service delivery.",
     icon: Briefcase,
-    size: "medium",
+    size: "medium" as const,
     highlight: true,
   },
   {
     id: 3,
     title: "Experiential Learning",
-    description:
-      "Facilitate experiential learning through fellowships, shadowing, and study tours in real operating environments.",
+    description: "Fellowships, shadowing, and study tours in real environments.",
     icon: Target,
-    size: "medium",
+    size: "medium" as const,
     highlight: false,
   },
   {
     id: 4,
     title: "Knowledge Exchange",
-    description:
-      "Enable knowledge exchange through conferences, seminars, and peer forums for continuous learning and collaboration.",
+    description: "Conferences, seminars, and peer forums.",
     icon: Users,
-    size: "medium",
+    size: "medium" as const,
     highlight: false,
   },
   {
     id: 5,
     title: "Networks & Partnerships",
-    description:
-      "Connect institutions with service providers and technical partners to support institutional efficiency and service improvement.",
+    description: "Connecting institutions with partners for improvement.",
     icon: Globe,
-    size: "medium",
+    size: "medium" as const,
     highlight: false,
   },
   {
     id: 6,
     title: "Recognition & Excellence",
-    description:
-      "Recognize institutions and leaders demonstrating excellence in efficiency, innovation, accountability, and service delivery.",
+    description: "Honoring excellence in efficiency and service delivery.",
     icon: Award,
-    size: "medium",
+    size: "medium" as const,
     highlight: false,
   },
 ];
@@ -99,13 +93,13 @@ export default function ServicesSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-10"
       >
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+        <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-2">
           What We Do
         </h2>
-        <p className="text-xl text-secondary-DEFAULT">
-          GEN serves public institutions, service-oriented private organizations, and mission-driven entities seeking practical, results-focused learning experiences.
+        <p className="text-lg text-secondary-DEFAULT max-w-2xl mx-auto">
+          Practical, results-focused learning for institutions and organizations.
         </p>
       </motion.div>
 
@@ -155,8 +149,8 @@ export default function ServicesSection() {
                   <Link
                     href={
                       service.id === 2
-                        ? "#consulting"
-                        : `#service-${service.id}`
+                        ? "/consulting"
+                        : "/programs"
                     }
                     className="text-accent-700 font-semibold flex items-center group-hover:translate-x-2 transition-transform"
                   >
