@@ -85,25 +85,25 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-4xl mr-auto text-left"
         >
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-white mb-6 leading-tight"
+            className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
           >
             Global Efficiency Network
           </motion.h1>
 
           <motion.div
             variants={itemVariants}
-            className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-accent-500 font-medium mb-8"
+            className="text-lg md:text-xl lg:text-2xl text-accent-500 font-medium mb-6"
           >
             Advancing Institutional Performance Through Experiential Learning
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-3xl"
+            className="text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-2xl"
           >
             U.S.-based capacity-building, consulting, and experiential learning
             for institutions worldwide. Headquartered in Alabama.
