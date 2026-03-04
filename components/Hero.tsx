@@ -85,7 +85,7 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl text-left"
+          className="max-w-4xl text-left bg-white/5 border border-white/20 rounded-lg p-6 md:p-8 backdrop-blur-[2px]"
         >
           <motion.h1
             variants={itemVariants}
