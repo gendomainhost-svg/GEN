@@ -96,7 +96,7 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="text-lg md:text-xl lg:text-2xl text-accent-700 font-medium mb-6"
+            className="text-lg md:text-xl lg:text-2xl text-accent-400 font-bold mb-6"
           >
             Advancing Institutional Performance Through Experiential Learning
           </motion.div>
