@@ -79,13 +79,13 @@ export default function Hero() {
       {/* Overlay for text readability (lighter to brighten photos) */}
       <div className="absolute inset-0 bg-primary-900/55 pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+      {/* Content - left-aligned with small left gap */}
+      <div className="relative z-10 w-full pl-6 md:pl-10 lg:pl-12 pr-6 py-32">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mr-auto text-left"
+          className="max-w-4xl text-left"
         >
           <motion.h1
             variants={itemVariants}
