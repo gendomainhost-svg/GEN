@@ -85,7 +85,7 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl text-left bg-white/5 border border-white/20 rounded-lg p-6 md:p-8 backdrop-blur-[2px]"
+          className="max-w-4xl text-left"
         >
           <motion.h1
             variants={itemVariants}
@@ -96,14 +96,14 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="text-lg md:text-xl lg:text-2xl text-accent-700 font-bold mb-6"
+            className="inline-block text-lg md:text-xl lg:text-2xl text-accent-700 font-bold mb-4 px-3 py-1.5 rounded bg-white/10 border border-white/20 backdrop-blur-[2px]"
           >
             Advancing Institutional Performance Through Experiential Learning
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-2xl"
+            className="inline-block text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-2xl px-3 py-1.5 rounded bg-white/10 border border-white/20 backdrop-blur-[2px]"
           >
             U.S.-based capacity-building, consulting, and experiential learning
             for institutions worldwide. Headquartered in Alabama.
