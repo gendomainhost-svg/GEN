@@ -50,25 +50,25 @@ export default function ProgramsPage() {
     <main className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section */}
-      <Section className="bg-primary-900 text-white pt-32 pb-16">
+      {/* Hero */}
+      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-4">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Program Pathways
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90">
             Select the learning model that fits your needs
           </p>
         </motion.div>
       </Section>
 
-      {/* Split Layout */}
-      <Section className="py-20">
+      {/* Open / Commissioned + formats + program lists */}
+      <Section className="py-16 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Open Enrollment Column */}
           <motion.div
@@ -214,7 +214,7 @@ export default function ProgramsPage() {
           transition={{ duration: 0.6 }}
           className="mt-16"
         >
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 text-center mb-12">
+          <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 text-center mb-10">
             Program Formats
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -244,15 +244,15 @@ export default function ProgramsPage() {
           </div>
         </motion.div>
 
-        {/* Detailed Program Lists */}
+        {/* Program lists */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-20"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16"
         >
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 text-center mb-12">
+          <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 text-center mb-10">
             Open Enrollment Programs
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -261,38 +261,7 @@ export default function ProgramsPage() {
             ))}
           </div>
 
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 text-center mb-12">
-            Commissioned & Custom Programs
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {commissionedPrograms.map((program, index) => (
-              <ProgramCard
-                key={program.id}
-                program={program}
-                index={index}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Detailed Program Lists */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-20"
-        >
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 text-center mb-12">
-            Open Enrollment Programs
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-            {openPrograms.map((program, index) => (
-              <ProgramCard key={program.id} program={program} index={index} />
-            ))}
-          </div>
-
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 text-center mb-12">
+          <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 text-center mb-10 mt-16">
             Commissioned & Custom Programs
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

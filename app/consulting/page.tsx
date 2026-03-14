@@ -111,34 +111,32 @@ export default function ConsultingPage() {
     <main className="min-h-screen">
       <Navbar />
 
-      {/* Hero Section with Bridge Image */}
-      <Section className="bg-primary-900 text-white pt-32 pb-16 relative overflow-hidden">
-        {/* Background Image */}
+      {/* Hero */}
+      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="w-full h-full bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6">
-              Institutional Advisory Services
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-              GEN provides advisory and consulting services focused on
-              strengthening institutional efficiency, leadership, and
-              performance. Our consulting engagements are practical,
-              evidence-based, and aligned with each client's institutional
-              realities.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-4xl mx-auto text-center"
+        >
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
+            Institutional Advisory Services
+          </h1>
+          <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+            GEN provides advisory and consulting services focused on
+            strengthening institutional efficiency, leadership, and
+            performance. Our consulting engagements are practical,
+            evidence-based, and aligned with each client's institutional
+            realities.
+          </p>
+        </motion.div>
       </Section>
 
       {/* Service Accordion */}
-      <Section className="py-20 bg-white">
+      <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -203,7 +201,7 @@ export default function ConsultingPage() {
                       className="overflow-hidden"
                     >
                       <div className="px-6 pb-6 pt-0 bg-primary-50">
-                        <div className="pl-18">
+                        <div className="pl-[4.5rem]">
                           <h4 className="font-semibold text-primary-900 mb-4">
                             Service Details:
                           </h4>
@@ -233,7 +231,7 @@ export default function ConsultingPage() {
       </Section>
 
       {/* Engagement Process */}
-      <Section className="py-20 bg-primary-50">
+      <Section className="py-16 md:py-20 bg-primary-50">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -278,7 +276,7 @@ export default function ConsultingPage() {
       </Section>
 
       {/* Integration Note */}
-      <Section className="py-20 bg-white">
+      <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -297,8 +295,8 @@ export default function ConsultingPage() {
         </motion.div>
       </Section>
 
-      {/* CTA Section */}
-      <Section className="py-20 bg-primary-900 text-white">
+      {/* CTA */}
+      <Section className="py-16 md:py-20 bg-primary-900 text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

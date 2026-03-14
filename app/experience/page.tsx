@@ -68,21 +68,21 @@ export default function ExperiencePage() {
     <main className="min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
-      <Section className="bg-primary-900 text-white pt-32 pb-16">
+      {/* Hero */}
+      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Learning Through Exposure
           </h1>
-          <p className="text-2xl text-white/90 mb-8">
+          <p className="text-lg md:text-xl text-white/90 mb-4">
             Moving beyond theory to observe real systems in action
           </p>
-          <p className="text-lg text-white/80 leading-relaxed">
+          <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
             Experiential learning is central to GEN's model. Participants engage
             with real institutions, professionals, and systems to gain insights
             that classroom instruction alone cannot provide.
@@ -90,8 +90,8 @@ export default function ExperiencePage() {
         </motion.div>
       </Section>
 
-      {/* The GEN Method Timeline */}
-      <Section className="py-20 bg-white">
+      {/* The GEN Method */}
+      <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -152,8 +152,8 @@ export default function ExperiencePage() {
         </div>
       </Section>
 
-      {/* Quote Section */}
-      <Section className="py-20 bg-primary-50">
+      {/* Quote */}
+      <Section className="py-16 md:py-20 bg-primary-50">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export default function ExperiencePage() {
       </Section>
 
       {/* Format Grid */}
-      <Section className="py-20 bg-white">
+      <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -225,7 +225,7 @@ export default function ExperiencePage() {
       </Section>
 
       {/* Key Benefits */}
-      <Section className="py-20 bg-primary-50">
+      <Section className="py-16 md:py-20 bg-primary-50">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -262,8 +262,8 @@ export default function ExperiencePage() {
         </div>
       </Section>
 
-      {/* CTA Section */}
-      <Section className="py-20 bg-primary-900 text-white">
+      {/* CTA */}
+      <Section className="py-16 md:py-20 bg-primary-900 text-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

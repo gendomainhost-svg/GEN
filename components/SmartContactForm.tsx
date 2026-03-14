@@ -153,42 +153,14 @@ export default function SmartContactForm() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="text-center mb-12"
       >
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900">
           Contact & Inquiry
         </h2>
-        <p className="text-xl text-secondary-DEFAULT max-w-3xl mx-auto">
-          Let us know how GEN can help you achieve your goals
-        </p>
       </motion.div>
 
       <div className="max-w-4xl mx-auto">
-        {/* Step Indicator */}
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center space-x-4">
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                step === 1
-                  ? "bg-primary-900 text-white"
-                  : "bg-primary-200 text-primary-900"
-              }`}
-            >
-              1
-            </div>
-            <div className={`w-16 h-1 ${step === 2 ? "bg-primary-900" : "bg-primary-200"}`} />
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                step === 2
-                  ? "bg-primary-900 text-white"
-                  : "bg-primary-200 text-primary-900"
-              }`}
-            >
-              2
-            </div>
-          </div>
-        </div>
-
         <AnimatePresence mode="wait">
           {step === 1 ? (
             <motion.div
@@ -198,10 +170,6 @@ export default function SmartContactForm() {
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-6 text-center">
-                How can GEN help you?
-              </h3>
-
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {inquiryOptions.map((option) => {
                   const Icon = option.icon;
@@ -216,12 +184,9 @@ export default function SmartContactForm() {
                       <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-900 transition-colors">
                         <Icon className="text-primary-700 group-hover:text-white transition-colors" size={28} />
                       </div>
-                      <h4 className="font-serif text-xl font-bold text-primary-900 mb-1">
+                      <h4 className="font-serif text-xl font-bold text-primary-900 mb-2">
                         {option.title}
                       </h4>
-                      <p className="text-accent-700 font-semibold text-sm mb-2">
-                        {option.subtitle}
-                      </p>
                       <p className="text-secondary-DEFAULT text-sm">
                         {option.description}
                       </p>
@@ -248,14 +213,11 @@ export default function SmartContactForm() {
                 <div className="mb-6">
                   <button
                     onClick={() => setStep(1)}
-                    className="flex items-center text-primary-900 hover:text-accent-700 font-medium transition-colors mb-4"
+                    className="flex items-center text-primary-900 hover:text-accent-700 font-medium transition-colors"
                   >
                     <ArrowLeft className="mr-2" size={18} />
                     Back
                   </button>
-                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900">
-                    Tell Us More
-                  </h3>
                 </div>
 
                 <form onSubmit={step2Form.handleSubmit(onStep2Submit)} className="space-y-6">

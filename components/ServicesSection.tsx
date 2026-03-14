@@ -121,7 +121,7 @@ export default function ServicesSection() {
             <motion.div
               key={service.id}
               variants={cardVariants}
-              className={`group relative bg-white rounded-xl p-6 md:p-8 shadow-lg transition-all duration-300 hover:scale-[1.02] border border-primary-200 hover:border-primary-300 hover:shadow-[0_0_28px_rgba(185,28,28,0.4)] ${colSpan}`}
+              className={`group relative bg-white rounded-xl p-6 md:p-8 shadow-lg transition-all duration-300 hover:scale-[1.02] border border-primary-200 hover:border-primary-300 hover:shadow-[0_0_28px_rgba(185,28,28,0.4)] hover:outline hover:outline-2 hover:outline-red-600 hover:outline-offset-2 ${colSpan}`}
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">

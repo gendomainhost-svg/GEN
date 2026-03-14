@@ -135,7 +135,7 @@ export default function ProgramDetailClient({ slug }: ProgramDetailClientProps) 
         </div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-16 md:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
           {/* Left Column - Main Content (70%) */}
           <div className="lg:col-span-7 space-y-8">

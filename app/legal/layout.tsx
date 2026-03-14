@@ -24,7 +24,7 @@ export default function LegalLayout({
     <main className="min-h-screen">
       <Navbar />
       
-      <div className="pt-32 pb-20 bg-white">
+      <div className="pt-28 md:pt-32 pb-16 md:pb-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
             {/* Sidebar Navigation */}

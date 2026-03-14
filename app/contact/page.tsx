@@ -15,26 +15,26 @@ export default function ContactPage() {
     <main className="min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
-      <Section className="bg-primary-900 text-white pt-32 pb-16">
+      {/* Hero */}
+      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="font-serif text-5xl md:text-6xl font-bold mb-4">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Contact GEN
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90">
             Get in touch with our team. We're here to help you find the right
             program or consulting solution.
           </p>
         </motion.div>
       </Section>
 
-      {/* Contact Information & Form Section */}
-      <Section className="py-20 bg-white relative overflow-hidden">
+      {/* Contact info & form */}
+      <Section className="py-16 md:py-20 bg-white relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <Image

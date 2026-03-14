@@ -98,8 +98,34 @@ export default function AboutPage() {
         </motion.div>
       </Section>
 
-      {/* Mission & Vision - directly below About GEN */}
-      <Section className="py-12 md:py-16 bg-white border-b border-primary-100">
+      {/* Who We Are */}
+      <Section className="py-16 md:py-20 bg-primary-50/50">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto"
+        >
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-6">
+            Who We Are
+          </h2>
+          <p className="text-secondary-DEFAULT leading-relaxed mb-4">
+            Global Efficiency Network (GEN) is an institutional learning and
+            consulting platform dedicated to strengthening organizational
+            performance across sectors and regions. GEN was established to meet
+            the growing demand for practical, exposure-based learning that
+            improves how institutions lead, operate, and deliver services.
+          </p>
+          <p className="text-secondary-DEFAULT leading-relaxed">
+            While GEN originates from the United States, its work is global in
+            outlook and application.
+          </p>
+        </motion.div>
+      </Section>
+
+      {/* Mission & Vision */}
+      <Section className="py-16 md:py-20 bg-white border-b border-primary-100">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             <motion.div
@@ -138,34 +164,94 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Who We Are */}
-      <Section className="py-12 md:py-16 bg-primary-50/50">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-6">
-            Who We Are
-          </h2>
-          <p className="text-secondary-DEFAULT leading-relaxed mb-4">
-            Global Efficiency Network (GEN) is an institutional learning and
-            consulting platform dedicated to strengthening organizational
-            performance across sectors and regions. GEN was established to meet
-            the growing demand for practical, exposure-based learning that
-            improves how institutions lead, operate, and deliver services.
-          </p>
-          <p className="text-secondary-DEFAULT leading-relaxed">
-            While GEN originates from the United States, its work is global in
-            outlook and application.
-          </p>
-        </motion.div>
+      {/* Our Philosophy */}
+      <Section className="py-16 md:py-20 bg-primary-50">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-10"
+          >
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-2">
+              Our Philosophy
+            </h2>
+            <p className="text-secondary-DEFAULT max-w-2xl">
+              GEN believes that sustainable institutional improvement is achieved through:
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="bg-white rounded-lg p-5 border border-primary-200"
+                >
+                  <div className="w-11 h-11 bg-primary-100 rounded-lg flex items-center justify-center mb-3">
+                    <Icon className="text-primary-700" size={22} />
+                  </div>
+                  <h3 className="font-serif text-lg font-bold text-primary-900 mb-1">
+                    {value.title}
+                  </h3>
+                  <p className="text-secondary-DEFAULT text-sm">
+                    {value.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </Section>
+
+      {/* Leadership Team */}
+      <Section className="py-16 md:py-20 bg-white border-t border-primary-100">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
+          >
+            Leadership Team
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {leadership.map((member, index) => (
+              <motion.div
+                key={member.placeholder}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+                className="bg-primary-50 rounded-lg p-6 border border-primary-200 text-center"
+              >
+                <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-primary-900 text-xl font-bold">
+                    {member.placeholder}
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg font-bold text-primary-900 mb-0.5">
+                  {member.name}
+                </h3>
+                <p className="text-accent-700 font-semibold text-sm mb-2">
+                  {member.title}
+                </p>
+                <p className="text-secondary-DEFAULT text-sm leading-relaxed">
+                  {member.bio}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </Section>
 
       {/* Why the United States */}
-      <Section className="py-12 md:py-16 bg-white relative overflow-hidden">
+      <Section className="py-16 md:py-20 bg-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
           <Image
             src="/images/WHYUSA.png"
@@ -222,92 +308,6 @@ export default function AboutPage() {
             GEN also deploys U.S.-based expertise globally when programs are
             delivered outside the United States.
           </motion.p>
-        </div>
-      </Section>
-
-      {/* Our Philosophy */}
-      <Section className="py-12 md:py-16 bg-primary-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-10"
-          >
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-2">
-              Our Philosophy
-            </h2>
-            <p className="text-secondary-DEFAULT max-w-2xl">
-              GEN believes that sustainable institutional improvement is achieved through:
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="bg-white rounded-lg p-5 border border-primary-200"
-                >
-                  <div className="w-11 h-11 bg-primary-100 rounded-lg flex items-center justify-center mb-3">
-                    <Icon className="text-primary-700" size={22} />
-                  </div>
-                  <h3 className="font-serif text-lg font-bold text-primary-900 mb-1">
-                    {value.title}
-                  </h3>
-                  <p className="text-secondary-DEFAULT text-sm">
-                    {value.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </Section>
-
-      {/* Leadership Team */}
-      <Section className="py-12 md:py-16 bg-white border-t border-primary-100">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
-          >
-            Leadership Team
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {leadership.map((member, index) => (
-              <motion.div
-                key={member.placeholder}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="bg-primary-50 rounded-lg p-6 border border-primary-200 text-center"
-              >
-                <div className="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-primary-900 text-xl font-bold">
-                    {member.placeholder}
-                  </span>
-                </div>
-                <h3 className="font-serif text-lg font-bold text-primary-900 mb-0.5">
-                  {member.name}
-                </h3>
-                <p className="text-accent-700 font-semibold text-sm mb-2">
-                  {member.title}
-                </p>
-                <p className="text-secondary-DEFAULT text-sm leading-relaxed">
-                  {member.bio}
-                </p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </Section>
 
