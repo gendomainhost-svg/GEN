@@ -41,16 +41,17 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <MapPin className="text-accent-500 flex-shrink-0 mt-1" size={20} />
                 <p className="text-white/70 text-sm">
-                  Headquartered in Alabama, United States
+                  Global Efficiency Network, LLC<br />
+                  9340 Helena Rd STE F - 111, Birmingham, AL 35244-1747
                 </p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-accent-500 flex-shrink-0" size={20} />
                 <a
-                  href="mailto:info@globalefficiencynetwork.org"
+                  href="mailto:geninquirer@gmail.com"
                   className="text-white/70 hover:text-white transition-colors text-sm"
                 >
-                  info@globalefficiencynetwork.org
+                  geninquirer@gmail.com
                 </a>
               </div>
             </div>

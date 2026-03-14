@@ -96,17 +96,17 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="inline-block text-lg md:text-xl lg:text-2xl text-accent-700 font-bold mb-4 px-3 py-1.5 rounded bg-white/10 border border-white/20 backdrop-blur-[2px]"
+            className="text-lg md:text-xl lg:text-2xl text-white font-bold italic mb-6"
           >
             Advancing Institutional Performance Through Experiential Learning
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="inline-block text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-2xl px-3 py-1.5 rounded bg-white/10 border border-white/20 backdrop-blur-[2px]"
+            className="text-base md:text-lg text-white/90 mb-10 leading-relaxed max-w-2xl"
           >
             U.S.-based capacity-building, consulting, and experiential learning
-            for institutions worldwide. Headquartered in Alabama.
+            for institutions worldwide.
           </motion.p>
 
           <motion.div

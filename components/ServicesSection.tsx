@@ -28,7 +28,7 @@ const services = [
     description: "Advisory services for efficiency and service delivery.",
     icon: Briefcase,
     size: "medium" as const,
-    highlight: true,
+    highlight: false,
   },
   {
     id: 3,
@@ -121,21 +121,11 @@ export default function ServicesSection() {
             <motion.div
               key={service.id}
               variants={cardVariants}
-              className={`group relative bg-white rounded-xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-primary-200 hover:border-primary-300 ${
-                service.highlight
-                  ? "ring-2 ring-accent-700 ring-offset-4 ring-offset-primary-50 bg-gradient-to-br from-white to-accent-50/30"
-                  : ""
-              } ${colSpan}`}
+              className={`group relative bg-white rounded-xl p-6 md:p-8 shadow-lg transition-all duration-300 hover:scale-[1.02] border border-primary-200 hover:border-primary-300 hover:shadow-[0_0_28px_rgba(185,28,28,0.4)] ${colSpan}`}
             >
               <div className="flex flex-col h-full">
                 <div className="mb-4">
-                  <div
-                    className={`w-14 h-14 rounded-lg flex items-center justify-center mb-4 ${
-                      service.highlight
-                        ? "bg-accent-50 text-accent-700"
-                        : "bg-primary-100 text-primary-700"
-                    }`}
-                  >
+                  <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-primary-100 text-primary-700">
                     <Icon size={28} />
                   </div>
                   <h3 className="font-serif text-2xl font-bold text-primary-900 mb-3">

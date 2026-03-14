@@ -93,10 +93,10 @@ export default function DisclaimerPage() {
           <p>
             For questions regarding this Disclaimer, contact:{" "}
             <a
-              href="mailto:info@globalefficiencynetwork.org"
+              href="mailto:geninquirer@gmail.com"
               className="text-accent-700 hover:underline"
             >
-              info@globalefficiencynetwork.org
+              geninquirer@gmail.com
             </a>
           </p>
         </section>

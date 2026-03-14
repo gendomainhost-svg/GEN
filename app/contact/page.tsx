@@ -68,10 +68,10 @@ export default function ContactPage() {
                       Email
                     </h3>
                     <a
-                      href="mailto:info@globalefficiencynetwork.org"
+                      href="mailto:geninquirer@gmail.com"
                       className="text-secondary-DEFAULT hover:text-accent-700 transition-colors"
                     >
-                      info@globalefficiencynetwork.org
+                      geninquirer@gmail.com
                     </a>
                   </div>
                 </div>
@@ -85,7 +85,8 @@ export default function ContactPage() {
                       Headquarters
                     </h3>
                     <p className="text-secondary-DEFAULT">
-                      Alabama, United States
+                      Global Efficiency Network, LLC<br />
+                      9340 Helena Rd STE F - 111, Birmingham, AL 35244-1747
                     </p>
                   </div>
                 </div>

@@ -133,10 +133,10 @@ export default function PrivacyPage() {
           <p>
             For privacy inquiries, contact:{" "}
             <a
-              href="mailto:info@globalefficiencynetwork.org"
+              href="mailto:geninquirer@gmail.com"
               className="text-accent-700 hover:underline"
             >
-              info@globalefficiencynetwork.org
+              geninquirer@gmail.com
             </a>
           </p>
         </section>
