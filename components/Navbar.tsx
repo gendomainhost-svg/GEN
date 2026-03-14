@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Experience", href: "/experience" },
   { name: "Consulting", href: "/consulting" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact Us", href: "/contact", highlight: true },
 ];
 
 export default function Navbar() {
@@ -50,17 +50,15 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-white/90 hover:text-white transition-colors text-sm font-medium"
+                className={`transition-colors text-sm font-medium ${
+                  link.highlight
+                    ? "text-red-500 hover:text-red-400 font-semibold"
+                    : "text-white/90 hover:text-white"
+                }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="#contact"
-              className="bg-accent-700 hover:bg-accent-600 text-white px-6 py-2 rounded-lg font-medium transition-all hover:shadow-lg hover:scale-105 shadow-md"
-            >
-              Partner With Us
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,19 +84,16 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block text-white/90 hover:text-white transition-colors"
+                  className={`block transition-colors ${
+                    link.highlight
+                      ? "text-red-500 hover:text-red-400 font-semibold"
+                      : "text-white/90 hover:text-white"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="#contact"
-                className="block bg-accent-700 hover:bg-accent-600 text-white px-6 py-2 rounded-lg font-medium text-center transition-all shadow-md"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Partner With Us
-              </Link>
             </motion.div>
           )}
         </AnimatePresence>

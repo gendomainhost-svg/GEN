@@ -89,7 +89,7 @@ export default function Hero() {
         >
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 leading-tight"
+            className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-1 leading-tight"
           >
             Global Efficiency Network
           </motion.h1>
