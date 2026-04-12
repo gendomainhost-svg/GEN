@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import Section from "@/components/Section";
-import { BookOpen, Briefcase, Globe2, Target } from "lucide-react";
+import { BookOpen, Briefcase, Globe2, Target, User } from "lucide-react";
 import Image from "next/image";
 
 export default function AboutPage() {
@@ -41,12 +41,12 @@ export default function AboutPage() {
     {
       icon: Briefcase,
       title: "Practitioner-Led",
-      description: "Not only instructors",
+      description: "Learning from practitioners, not only instructors",
     },
     {
       icon: Globe2,
       title: "Cross-Sector Exchange",
-      description: "Knowledge sharing across industries",
+      description: "Knowledge sharing across industries and sectors",
     },
     {
       icon: Target,
@@ -77,9 +77,66 @@ export default function AboutPage() {
         </motion.div>
       </Section>
 
-      {/* Mission & Vision */}
+      {/* Who We Are */}
       <Section className="py-16 md:py-20 bg-white border-b border-primary-100">
         <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-10"
+          >
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-4">
+              Who We Are
+            </h2>
+            <p className="text-secondary-DEFAULT text-base md:text-lg leading-relaxed">
+              Global Efficiency Network (GEN) is an institutional learning and
+              consulting platform dedicated to strengthening organizational
+              performance across sectors and regions. GEN was established to meet
+              the growing demand for practical, exposure-based learning that
+              improves how institutions lead, operate, and deliver services.
+            </p>
+            <p className="text-secondary-DEFAULT text-base md:text-lg leading-relaxed mt-4">
+              While GEN originates from the United States, its work is global in
+              outlook and application.
+            </p>
+          </motion.div>
+
+          {/* Founder Profile */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="bg-primary-50 rounded-xl p-6 md:p-8 border border-primary-200 mb-10"
+          >
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+              <div className="w-24 h-24 bg-primary-200 rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="text-primary-700" size={40} />
+              </div>
+              <div>
+                <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-900 mb-1">
+                  Godwin Honu
+                </h3>
+                <p className="text-accent-700 font-semibold text-sm mb-3">
+                  Founder &amp; Principal
+                </p>
+                <p className="text-secondary-DEFAULT leading-relaxed">
+                  Godwin Honu is the founder and principal of Global Efficiency
+                  Network (GEN). With a deep commitment to strengthening
+                  institutional performance globally, he established GEN to
+                  bridge the gap between world-class operational practices and
+                  the organizations that need them most. His vision drives GEN's
+                  mission to connect institutions and professionals worldwide
+                  with high-standard learning, expertise, and operational
+                  practices drawn from the United States and beyond.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Mission & Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -131,7 +188,8 @@ export default function AboutPage() {
               Our Philosophy
             </h2>
             <p className="text-secondary-DEFAULT text-base md:text-lg max-w-2xl leading-relaxed">
-              GEN believes that sustainable institutional improvement is achieved through:
+              GEN believes that sustainable institutional improvement is achieved
+              through:
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -184,9 +242,10 @@ export default function AboutPage() {
               Why the United States
             </h2>
             <p className="text-secondary-DEFAULT text-base md:text-lg max-w-2xl leading-relaxed">
-              The United States offers one of the world&apos;s most advanced ecosystems
-              for public administration, service delivery, innovation, and
-              organizational management.
+              The United States offers one of the world&apos;s most advanced
+              ecosystems for public administration, service delivery, innovation,
+              and organizational management. GEN situates its programs in the
+              U.S. to provide participants with exposure to:
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

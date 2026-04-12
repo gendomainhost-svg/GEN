@@ -75,6 +75,20 @@ const consultingServices = [
       "Performance monitoring systems",
     ],
   },
+  {
+    id: 5,
+    title: "Strategy & Institutional Reform",
+    icon: TrendingUp,
+    description:
+      "Supporting institutional reform design and strategic transformation. We help institutions develop comprehensive strategies for sustainable change and long-term performance improvement.",
+    details: [
+      "Strategic planning and reform design",
+      "Institutional restructuring advisory",
+      "Policy development support",
+      "Long-term performance frameworks",
+      "Sustainability and impact assessment",
+    ],
+  },
 ];
 
 const engagementProcess = [

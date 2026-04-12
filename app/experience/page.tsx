@@ -12,55 +12,100 @@ import {
   BookOpen,
   ArrowRight,
   CheckCircle2,
+  Globe2,
+  MessageSquare,
+  Monitor,
+  Network,
 } from "lucide-react";
-import Image from "next/image";
 
 export default function ExperiencePage() {
   const methodSteps = [
     {
       step: 1,
       title: "Observation",
-      description: "Site visits to US facilities to observe operational excellence in real-world settings",
+      description:
+        "Site visits to U.S. facilities to observe operational excellence in real-world settings",
       icon: Eye,
     },
     {
       step: 2,
       title: "Engagement",
-      description: "Shadowing practitioners and engaging directly with US institutions and professionals",
+      description:
+        "Shadowing practitioners and engaging directly with U.S. institutions and professionals",
       icon: Users,
     },
     {
       step: 3,
       title: "Adaptation",
-      description: "Workshops to apply lessons learned and adapt proven practices to your home context",
+      description:
+        "Workshops to apply lessons learned and adapt proven practices to your home context",
       icon: Target,
     },
   ];
 
-  const formats = [
+  const experientialFormats = [
     {
       title: "Institutional Shadowing",
       description:
-        "Direct observation of operational practices and decision-making processes",
+        "Direct observation of operational practices and decision-making processes within real institutions",
       icon: Eye,
     },
     {
-      title: "Site Visits",
+      title: "Professional Fellowships",
       description:
-        "Guided tours of US infrastructure, agencies, and service delivery facilities",
+        "Extended immersion programs combining shadowing, mentorship, and hands-on learning experiences",
+      icon: Target,
+    },
+    {
+      title: "Site Visits & Operational Tours",
+      description:
+        "Guided tours of U.S. infrastructure, agencies, and service delivery facilities",
       icon: BookOpen,
     },
     {
-      title: "Peer Exchange",
+      title: "Practitioner-Led Engagements",
       description:
-        "Structured dialogue sessions with peers from similar institutions",
+        "Direct engagement with active professionals and leaders sharing real-world expertise",
       icon: Users,
     },
     {
-      title: "Fellowships",
+      title: "Peer Exchange Sessions",
       description:
-        "Extended immersion programs combining shadowing, mentorship, and learning",
-      icon: Target,
+        "Structured dialogue sessions with peers from similar institutions around the world",
+      icon: MessageSquare,
+    },
+  ];
+
+  const knowledgeExchange = [
+    {
+      title: "International Conferences",
+      description:
+        "Large-scale gatherings bringing together global institutional leaders",
+      icon: Globe2,
+    },
+    {
+      title: "Policy & Practice Seminars",
+      description:
+        "Focused sessions on specific policy areas and best practice sharing",
+      icon: BookOpen,
+    },
+    {
+      title: "Executive Roundtables",
+      description:
+        "Intimate, high-level discussions among senior leaders and decision-makers",
+      icon: Users,
+    },
+    {
+      title: "Webinars & Virtual Forums",
+      description:
+        "Online platforms for continuous learning regardless of location",
+      icon: Monitor,
+    },
+    {
+      title: "Peer Learning Networks",
+      description:
+        "Ongoing communities of practice for cross-institutional collaboration",
+      icon: Network,
     },
   ];
 
@@ -83,9 +128,9 @@ export default function ExperiencePage() {
             Moving beyond theory to observe real systems in action
           </p>
           <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
-            Experiential learning is central to GEN's model. Participants engage
-            with real institutions, professionals, and systems to gain insights
-            that classroom instruction alone cannot provide.
+            Experiential learning is central to GEN&apos;s model. Participants
+            engage with real institutions, professionals, and systems to gain
+            insights that classroom instruction alone cannot provide.
           </p>
         </motion.div>
       </Section>
@@ -163,18 +208,18 @@ export default function ExperiencePage() {
         >
           <blockquote className="bg-white rounded-xl p-8 md:p-12 shadow-lg border-l-4 border-accent-700">
             <p className="text-2xl md:text-3xl font-serif text-primary-900 italic leading-relaxed mb-6">
-              "Participants engage directly with U.S. institutions to observe,
-              learn, and adapt proven practices to their own operational
-              contexts."
+              &quot;These experiences enable participants to translate observed
+              practices into actionable improvements within their own
+              institutions.&quot;
             </p>
             <footer className="text-secondary-DEFAULT font-medium">
-              — Global Efficiency Network Approach
+              — Global Efficiency Network
             </footer>
           </blockquote>
         </motion.div>
       </Section>
 
-      {/* Format Grid */}
+      {/* Experiential Formats */}
       <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -187,14 +232,13 @@ export default function ExperiencePage() {
             Experiential Formats
           </h2>
           <p className="text-lg text-secondary-DEFAULT max-w-3xl mx-auto">
-            These experiences enable participants to translate observed
-            practices into actionable improvements within their own
-            institutions.
+            These experiences enable participants to translate observed practices
+            into actionable improvements within their own institutions.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {formats.map((format, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {experientialFormats.map((format, index) => {
             const Icon = format.icon;
             return (
               <motion.div
@@ -203,29 +247,71 @@ export default function ExperiencePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-primary-50 rounded-xl p-8 border-2 border-primary-200 hover:border-accent-700 transition-all shadow-md hover:shadow-xl"
+                className="bg-primary-50 rounded-xl p-6 border-2 border-primary-200 hover:border-accent-700 transition-all shadow-md hover:shadow-xl"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 bg-accent-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon className="text-accent-700" size={28} />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-xl font-bold text-primary-900 mb-2">
-                      {format.title}
-                    </h3>
-                    <p className="text-secondary-DEFAULT leading-relaxed">
-                      {format.description}
-                    </p>
-                  </div>
+                <div className="w-14 h-14 bg-accent-100 rounded-lg flex items-center justify-center mb-4">
+                  <Icon className="text-accent-700" size={28} />
                 </div>
+                <h3 className="font-serif text-xl font-bold text-primary-900 mb-2">
+                  {format.title}
+                </h3>
+                <p className="text-secondary-DEFAULT leading-relaxed text-sm">
+                  {format.description}
+                </p>
               </motion.div>
             );
           })}
         </div>
       </Section>
 
-      {/* Key Benefits */}
+      {/* Knowledge Exchange */}
       <Section className="py-16 md:py-20 bg-primary-50">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+            Convening for Learning and Insight
+          </h2>
+          <p className="text-lg text-secondary-DEFAULT max-w-3xl mx-auto">
+            GEN facilitates structured platforms for dialogue, learning, and
+            collaboration among institutions and professionals. These platforms
+            support continuous learning and cross-institutional collaboration.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {knowledgeExchange.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 border border-primary-200 shadow-md hover:shadow-lg transition-all"
+              >
+                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-3">
+                  <Icon className="text-primary-700" size={24} />
+                </div>
+                <h3 className="font-serif text-lg font-bold text-primary-900 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-secondary-DEFAULT text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* Why Experiential Learning Works */}
+      <Section className="py-16 md:py-20 bg-white">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,9 +339,12 @@ export default function ExperiencePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="flex items-center space-x-3 bg-white p-4 rounded-lg border border-primary-200 shadow-sm"
+              className="flex items-center space-x-3 bg-primary-50 p-4 rounded-lg border border-primary-200 shadow-sm"
             >
-              <CheckCircle2 className="text-accent-700 flex-shrink-0" size={24} />
+              <CheckCircle2
+                className="text-accent-700 flex-shrink-0"
+                size={24}
+              />
               <span className="text-primary-900 font-medium">{benefit}</span>
             </motion.div>
           ))}

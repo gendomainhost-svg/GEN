@@ -1,41 +1,61 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import Link from "next/link";
 
 const footerLinks = {
   programs: [
-    { name: "Executive Training", href: "#services" },
-    { name: "Fellowships", href: "#services" },
-    { name: "Client-Specific Programs", href: "#services" },
+    { name: "Open-Enrollment Programs", href: "/programs" },
+    { name: "Commissioned Programs", href: "/programs" },
+    { name: "Experiential Learning", href: "/experience" },
   ],
   consulting: [
-    { name: "Advisory Services", href: "#consulting" },
-    { name: "Organizational Diagnostics", href: "#consulting" },
-    { name: "Change Management", href: "#consulting" },
+    { name: "Organizational Diagnostics", href: "/consulting" },
+    { name: "Service Delivery Optimization", href: "/consulting" },
+    { name: "Leadership & Governance Advisory", href: "/consulting" },
+    { name: "Operational Efficiency", href: "/consulting" },
   ],
   about: [
-    { name: "About GEN", href: "#about" },
-    { name: "Our Approach", href: "#about" },
-    { name: "Knowledge Exchange", href: "#knowledge" },
+    { name: "About GEN", href: "/about" },
+    { name: "Our Team", href: "/our-team" },
+    { name: "Knowledge Exchange", href: "/experience" },
   ],
-  partners: [
-    { name: "Partner With Us", href: "#contact" },
-    { name: "Become a Partner", href: "#contact" },
+  engage: [
+    { name: "Apply for a Program", href: "/programs" },
+    { name: "Request Consulting", href: "/contact" },
+    { name: "Partnership Inquiry", href: "/contact" },
+  ],
+  legal: [
+    { name: "Terms of Use", href: "/legal/terms" },
+    { name: "Privacy Policy", href: "/legal/privacy" },
+    { name: "Disclaimer", href: "/legal/disclaimer" },
   ],
 };
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-primary-900 text-white">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+    <footer id="contact" className="bg-primary-900 text-white relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-700/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-accent-700/3 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-2"
+          >
             <h3 className="font-serif text-3xl font-bold mb-4">GEN</h3>
-            <p className="text-white/70 mb-6 leading-relaxed">
+            <p className="text-white/70 mb-2 leading-relaxed">
               Global Efficiency Network
+            </p>
+            <p className="text-white/50 text-sm mb-6 leading-relaxed">
+              Advancing Institutional Performance Through Experiential Learning
             </p>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
@@ -55,7 +75,7 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Programs Column */}
           <div>
@@ -91,7 +111,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* About & Partners Column */}
+          {/* About & Engage Column */}
           <div>
             <h4 className="font-semibold mb-4 text-white">About</h4>
             <ul className="space-y-2 mb-6">
@@ -106,9 +126,26 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-            <h4 className="font-semibold mb-4 text-white">Partners</h4>
+            <h4 className="font-semibold mb-4 text-white">Engage</h4>
             <ul className="space-y-2">
-              {footerLinks.partners.map((link) => (
+              {footerLinks.engage.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-white/70 hover:text-white transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Column */}
+          <div>
+            <h4 className="font-semibold mb-4 text-white">Legal</h4>
+            <ul className="space-y-2">
+              {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -171,4 +208,3 @@ export default function Footer() {
     </footer>
   );
 }
-

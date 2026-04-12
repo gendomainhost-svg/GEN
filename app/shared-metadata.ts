@@ -6,7 +6,7 @@ export const defaultMetadata: Metadata = {
     template: "%s | Global Efficiency Network (GEN)",
   },
   description:
-    "An international capacity-building and consulting organization originating from the United States. Specializing in institutional excellence and executive training.",
+    "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
   keywords: [
     "Capacity Building",
     "Institutional Reform",
@@ -38,7 +38,7 @@ export const defaultMetadata: Metadata = {
     siteName: "Global Efficiency Network",
     title: "Global Efficiency Network (GEN)",
     description:
-      "An international capacity-building and consulting organization originating from the United States. Specializing in institutional excellence and executive training.",
+      "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
     images: [
       {
         url: "/images/WHYUSA.png",
@@ -52,7 +52,7 @@ export const defaultMetadata: Metadata = {
     card: "summary_large_image",
     title: "Global Efficiency Network (GEN)",
     description:
-      "An international capacity-building and consulting organization originating from the United States. Specializing in institutional excellence and executive training.",
+      "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
     images: ["/images/WHYUSA.png"],
   },
   robots: {

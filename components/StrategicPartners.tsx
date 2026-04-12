@@ -1,36 +1,88 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Building2, GraduationCap, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  GraduationCap,
+  Shield,
+  Briefcase,
+  Cpu,
+} from "lucide-react";
 import Section from "./Section";
 
 const partnerTypes = [
-  { name: "University Partner", icon: GraduationCap, color: "text-blue-600" },
-  { name: "Tech Provider", icon: Building2, color: "text-green-600" },
-  { name: "Gov Agency", icon: Shield, color: "text-purple-600" },
-  { name: "University Partner", icon: GraduationCap, color: "text-blue-600" },
-  { name: "Tech Provider", icon: Building2, color: "text-green-600" },
-  { name: "Gov Agency", icon: Shield, color: "text-purple-600" },
-  { name: "University Partner", icon: GraduationCap, color: "text-blue-600" },
-  { name: "Tech Provider", icon: Building2, color: "text-green-600" },
+  {
+    name: "Universities & Academic Institutions",
+    icon: GraduationCap,
+    color: "text-blue-600",
+  },
+  {
+    name: "Government Agencies & Public Institutions",
+    icon: Shield,
+    color: "text-purple-600",
+  },
+  {
+    name: "Service-Oriented Private Organizations",
+    icon: Building2,
+    color: "text-green-600",
+  },
+  {
+    name: "Professional Firms & Consultants",
+    icon: Briefcase,
+    color: "text-amber-600",
+  },
+  {
+    name: "Technology & Solution Providers",
+    icon: Cpu,
+    color: "text-cyan-600",
+  },
+  {
+    name: "Universities & Academic Institutions",
+    icon: GraduationCap,
+    color: "text-blue-600",
+  },
+  {
+    name: "Government Agencies & Public Institutions",
+    icon: Shield,
+    color: "text-purple-600",
+  },
+  {
+    name: "Service-Oriented Private Organizations",
+    icon: Building2,
+    color: "text-green-600",
+  },
 ];
 
 export default function StrategicPartners() {
   return (
-    <Section className="bg-white py-20 md:py-32">
+    <Section className="bg-white py-20 md:py-32 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        transition={{ duration: 0.7 }}
+        className="relative text-center mb-16"
       >
+        <motion.span
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+        >
+          Networks & Partnerships
+        </motion.span>
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900 mb-4">
-          Ecosystem Connectivity
+          Building Strong Institutional Networks
         </h2>
         <p className="text-xl text-secondary-DEFAULT max-w-3xl mx-auto">
-          Collaborating with universities, government agencies, and technology
-          providers to deliver high-quality solutions
+          GEN collaborates with a diverse range of partners to deliver
+          high-quality programs and services. GEN also connects clients with
+          service providers whose products and expertise support institutional
+          efficiency and service improvement.
         </p>
       </motion.div>
 
@@ -91,8 +143,11 @@ export default function StrategicPartners() {
           href="/contact"
           className="inline-flex items-center text-primary-900 hover:text-accent-700 font-semibold text-lg transition-colors group"
         >
-          Become a Partner Institution
-          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+          Explore Partnership Opportunities
+          <ArrowRight
+            className="ml-2 group-hover:translate-x-1 transition-transform"
+            size={20}
+          />
         </a>
       </motion.div>
 

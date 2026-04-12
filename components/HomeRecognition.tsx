@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Trophy } from "lucide-react";
+import { Award, Trophy, CheckCircle2 } from "lucide-react";
+
+const recognitionFocus = [
+  "Institutional reform and performance improvement",
+  "Leadership excellence",
+  "Citizen- or client-centered service delivery",
+  "Innovation and operational impact",
+];
 
 export default function HomeRecognition() {
   return (
@@ -18,12 +25,32 @@ export default function HomeRecognition() {
           >
             <Award className="text-accent-500 mb-4 mx-auto lg:mx-0" size={40} />
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
-              Honoring Institutional Excellence
+              Honoring Institutional Leadership
             </h2>
             <p className="text-white/90 mb-6">
-              We recognize leaders and organizations that demonstrate outstanding
-              accountability, innovation, and impact.
+              GEN recognizes institutions and leaders who demonstrate outstanding
+              commitment to efficiency, innovation, accountability, and service
+              delivery.
             </p>
+
+            {/* Recognition Focus Items */}
+            <ul className="space-y-2 mb-6 text-left">
+              {recognitionFocus.map((item) => (
+                <li key={item} className="flex items-start space-x-3">
+                  <CheckCircle2
+                    className="text-accent-500 flex-shrink-0 mt-0.5"
+                    size={18}
+                  />
+                  <span className="text-white/80 text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-white/60 text-sm italic mb-6">
+              Recognition is merit-based, non-political, and grounded in
+              demonstrable outcomes.
+            </p>
+
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

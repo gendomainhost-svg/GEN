@@ -147,14 +147,22 @@ export default function SmartContactForm() {
   }
 
   return (
-    <Section id="contact" className="bg-primary-50 py-20 md:py-32">
+    <Section id="contact" className="bg-primary-50 py-20 md:py-32 dot-pattern">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-12"
+        transition={{ duration: 0.7 }}
+        className="text-center mb-14"
       >
+        <motion.span
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+        >
+          Engage GEN
+        </motion.span>
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary-900">
           Contact & Inquiry
         </h2>
@@ -177,19 +185,28 @@ export default function SmartContactForm() {
                     <motion.button
                       key={option.type}
                       onClick={() => handleOptionSelect(option.type)}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-2 border-primary-200 hover:border-primary-900 text-left group"
+                      whileHover={{ scale: 1.03, y: -4 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-2 border-primary-200 hover:border-accent-600/50 text-left group relative overflow-hidden"
                     >
-                      <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-900 transition-colors">
-                        <Icon className="text-primary-700 group-hover:text-white transition-colors" size={28} />
-                      </div>
-                      <h4 className="font-serif text-xl font-bold text-primary-900 mb-2">
+                      {/* Top accent line */}
+                      <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-accent-700 to-accent-500 group-hover:w-full transition-all duration-500" />
+                      <motion.div
+                        className="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-700 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-accent-700/20"
+                        whileHover={{ rotate: [0, -5, 5, 0] }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <Icon className="text-primary-700 group-hover:text-white transition-colors duration-500" size={28} />
+                      </motion.div>
+                      <h4 className="font-serif text-xl font-bold text-primary-900 mb-2 group-hover:text-accent-800 transition-colors">
                         {option.title}
                       </h4>
                       <p className="text-secondary-DEFAULT text-sm">
                         {option.description}
                       </p>
+                      <div className="mt-3 flex items-center text-accent-700 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Select <ArrowRight className="ml-1" size={14} />
+                      </div>
                     </motion.button>
                   );
                 })}

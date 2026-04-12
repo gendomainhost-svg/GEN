@@ -10,6 +10,11 @@
   body {
     @apply bg-primary-50 text-primary-900 antialiased;
   }
+
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer utilities {
@@ -22,3 +27,254 @@
   }
 }
 
+/* ============================
+   GLOBAL ANIMATIONS & DYNAMICS
+   ============================ */
+
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f1f5f9 25%,
+    #b91c1c 50%,
+    #f1f5f9 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 4s ease-in-out infinite;
+}
+
+@keyframes shimmer-text {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 200% center;
+  }
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  border: none;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #b91c1c, #0f172a, #b91c1c, #0f172a);
+  background-size: 300% 300%;
+  animation: gradient-rotate 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-delay-1 {
+  animation: float 6s ease-in-out 1s infinite;
+}
+.animate-float-delay-2 {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+/* Pulse ring */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* Gentle glow */
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(185, 28, 28, 0.15), 0 0 30px rgba(185, 28, 28, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(185, 28, 28, 0.3), 0 0 50px rgba(185, 28, 28, 0.1);
+  }
+}
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Ticker tape / marquee already exists but add a slow version */
+@keyframes marquee-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Dot grid pattern for backgrounds */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Line pattern for panel backgrounds */
+.line-pattern {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 49px,
+    rgba(15, 23, 42, 0.04) 49px,
+    rgba(15, 23, 42, 0.04) 50px
+  );
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #b91c1c, #dc2626, #b91c1c);
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* Card 3D tilt */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+/* Animated underline for links */
+.animated-underline {
+  position: relative;
+  display: inline-block;
+}
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Particle fade in */
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0);
+  }
+}
+
+/* Counter number animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section reveal from bottom */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth icon spin on hover */
+.icon-hover-spin:hover svg {
+  animation: spin-once 0.5s ease-in-out;
+}
+@keyframes spin-once {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scale pop for stat numbers */
+@keyframes scale-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

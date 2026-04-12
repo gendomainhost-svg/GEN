@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 
 type FormType = "individual" | "institutional" | "general";
 
-interface FormData {
+interface ContactFormValues {
   name: string;
   email: string;
   organization?: string;
@@ -19,6 +19,19 @@ interface FormData {
   subject?: string;
   message?: string;
 }
+
+const emptyFormData: ContactFormValues = {
+  name: "",
+  email: "",
+  organization: "",
+  jobTitle: "",
+  country: "",
+  programInterest: "",
+  cohortSize: "",
+  trainingObjectives: "",
+  subject: "",
+  message: "",
+};
 
 export default function ContactForm() {
   const searchParams = useSearchParams();
@@ -34,12 +47,11 @@ export default function ContactForm() {
       setActiveTab(typeParam);
     }
   }, [typeParam]);
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-  });
+
+  const [formData, setFormData] = useState<ContactFormValues>({ ...emptyFormData });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -48,24 +60,62 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const buildTemplateParams = useCallback(() => {
+    return {
+      form_type: activeTab,
+      name: formData.name,
+      from_name: formData.name,
+      email: formData.email,
+      reply_to: formData.email,
+      organization: formData.organization ?? "",
+      job_title: formData.jobTitle ?? "",
+      country: formData.country ?? "",
+      program_interest: formData.programInterest ?? "",
+      cohort_size: formData.cohortSize ?? "",
+      training_objectives: formData.trainingObjectives ?? "",
+      subject: formData.subject ?? "",
+      message: formData.message ?? "",
+    };
+  }, [activeTab, formData]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     setIsSubmitting(true);
 
-    // Simulate API call
-    console.log("Form Data:", { type: activeTab, ...formData });
-
-    // Show success message
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setShowSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(buildTemplateParams()),
       });
 
+      let data: { error?: string } = {};
+      try {
+        data = await res.json();
+      } catch {
+        /* non-JSON response */
+      }
+
+      if (!res.ok) {
+        setSubmitError(
+          data.error ??
+            "Something went wrong sending your message. Please try again or email us directly."
+        );
+        return;
+      }
+
+      setShowSuccess(true);
+      setFormData({ ...emptyFormData });
       setTimeout(() => setShowSuccess(false), 5000);
-    }, 1000);
+    } catch (err) {
+      console.error("Contact send failed:", err);
+      setSubmitError(
+        "Something went wrong sending your message. Please try again or email us directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const tabs = [
@@ -83,8 +133,9 @@ export default function ContactForm() {
             key={tab.id}
             onClick={() => {
               setActiveTab(tab.id);
-              setFormData({ name: "", email: "" });
+              setFormData({ ...emptyFormData });
               setShowSuccess(false);
+              setSubmitError(null);
             }}
             className={`px-6 py-3 font-medium transition-all ${
               activeTab === tab.id
@@ -390,6 +441,16 @@ export default function ContactForm() {
             <p className="text-accent-900 font-medium">
               Thank you! Your message has been received. We'll be in touch soon.
             </p>
+          </motion.div>
+        )}
+
+        {submitError && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-red-50 border-l-4 border-red-600 p-4 rounded-lg"
+          >
+            <p className="text-red-900 font-medium">{submitError}</p>
           </motion.div>
         )}
 
