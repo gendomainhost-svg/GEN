@@ -84,8 +84,9 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary-900"
     >
-      {/* Photo background with zoom effect */}
-      <div className="absolute inset-0">
+      {/* Photo background with zoom effect — starts below the navbar so
+          the nav blur doesn't dim the top of the photo. */}
+      <div className="absolute inset-x-0 bottom-0 top-20 md:top-28 overflow-hidden">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentImageIndex}
@@ -99,7 +100,7 @@ export default function Hero() {
               src={heroImages[currentImageIndex]}
               alt=""
               fill
-              className="object-cover brightness-110"
+              className="object-cover object-top brightness-110"
               priority
               sizes="100vw"
             />
