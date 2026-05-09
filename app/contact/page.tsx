@@ -1,6 +1,5 @@
 "use client";
 
-import { Suspense } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -8,7 +7,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -117,9 +116,7 @@ export default function ContactPage() {
                 <h2 className="font-serif text-3xl font-bold text-primary-900 mb-8">
                   Send Us a Message
                 </h2>
-                <Suspense fallback={<div className="text-center py-8">Loading form...</div>}>
-              <ContactForm />
-            </Suspense>
+                <ContactForm />
               </div>
             </motion.div>
           </div>

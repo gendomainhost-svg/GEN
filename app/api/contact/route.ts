@@ -49,6 +49,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Valid email is required." }, { status: 400 });
   }
 
+  const message = body.message;
+  if (
+    typeof message !== "string" ||
+    message.trim().length < 10
+  ) {
+    return NextResponse.json(
+      { error: "Please enter a message (at least 10 characters)." },
+      { status: 400 }
+    );
+  }
+
   const stringFields = [
     "form_type",
     "name",
