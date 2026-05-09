@@ -5,40 +5,21 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import Section from "@/components/Section";
-import { User, ArrowRight } from "lucide-react";
+import TeamCard from "@/components/team/TeamCard";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const leadership = [
-  {
-    name: "Godwin Honu",
-    title: "Founder & Principal",
-    bio: "Godwin Honu is the founder and principal of Global Efficiency Network (GEN). With a deep commitment to strengthening institutional performance globally, he established GEN to bridge the gap between world-class operational practices and the organizations that need them most. His vision drives GEN's mission to connect institutions and professionals worldwide with high-standard learning, expertise, and operational practices drawn from the United States and beyond.",
-    placeholder: "GH",
-    featured: true,
-  },
-  {
-    name: "Program Director",
-    title: "Program Director",
-    bio: "Designing and delivering capacity-building programs that connect global leaders with U.S. best practices through immersive training, executive development, and experiential learning formats.",
-    placeholder: "PD",
-    featured: false,
-  },
-  {
-    name: "Consulting Director",
-    title: "Consulting Director",
-    bio: "Providing institutional consulting and advisory services that drive measurable performance improvements across organizational diagnostics, service delivery, and operational efficiency.",
-    placeholder: "CD",
-    featured: false,
-  },
-];
+import { getMembersByCategory } from "@/app/data/team";
 
 export default function OurTeamPage() {
+  const founders = getMembersByCategory("founder");
+  const leadership = getMembersByCategory("leadership");
+
   return (
     <main className="min-h-screen">
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-28 pb-12 md:pt-32 md:pb-16">
+      <Section className="bg-primary-900 text-white pt-36 pb-12 md:pt-40 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,111 +36,77 @@ export default function OurTeamPage() {
         </motion.div>
       </Section>
 
-      {/* Founder Spotlight */}
-      <Section className="py-16 md:py-20 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
-          >
-            Founder
-          </motion.h2>
+      {/* Founder & Principal */}
+      {founders.length > 0 && (
+        <Section className="py-16 md:py-20 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
+            >
+              Founder &amp; Principal
+            </motion.h2>
 
-          {/* Godwin Honu — Featured Founder Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-primary-50 to-white rounded-xl p-8 md:p-10 border-2 border-primary-200 shadow-lg mb-12"
-          >
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-              <div className="w-28 h-28 bg-primary-900 rounded-full flex items-center justify-center flex-shrink-0 shadow-xl">
-                <span className="text-white text-3xl font-bold">GH</span>
-              </div>
-              <div className="text-center md:text-left flex-1">
-                <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-1">
-                  Godwin Honu
-                </h3>
-                <p className="text-accent-700 font-semibold mb-4">
-                  Founder &amp; Principal
-                </p>
-                <p className="text-secondary-DEFAULT leading-relaxed text-base md:text-lg">
-                  Godwin Honu is the founder and principal of Global Efficiency
-                  Network (GEN). With a deep commitment to strengthening
-                  institutional performance globally, he established GEN to
-                  bridge the gap between world-class operational practices and
-                  the organizations that need them most. His vision drives
-                  GEN&apos;s mission to connect institutions and professionals
-                  worldwide with high-standard learning, expertise, and
-                  operational practices drawn from the United States and beyond.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
-                  <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-semibold">
-                    Institutional Reform
-                  </span>
-                  <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-semibold">
-                    Capacity Building
-                  </span>
-                  <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-semibold">
-                    Experiential Learning
-                  </span>
-                  <span className="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-semibold">
-                    Global Partnerships
-                  </span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Other Leadership */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
-          >
-            Leadership Team
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {leadership
-              .filter((m) => !m.featured)
-              .map((member, index) => (
+            <div className="space-y-6">
+              {founders.map((member, idx) => (
                 <motion.div
-                  key={member.placeholder}
+                  key={member.slug}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="bg-primary-50 rounded-lg p-6 border border-primary-200"
+                  transition={{ delay: idx * 0.08 }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 bg-primary-200 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary-900 text-lg font-bold">
-                        {member.placeholder}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-lg font-bold text-primary-900 mb-1">
-                        {member.name}
-                      </h3>
-                      <p className="text-primary-700 font-semibold text-sm mb-2">
-                        {member.title}
-                      </p>
-                      <p className="text-secondary-DEFAULT text-sm leading-relaxed">
-                        {member.bio}
-                      </p>
-                    </div>
-                  </div>
+                  <TeamCard member={member} variant="featured" />
                 </motion.div>
               ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
+
+      {/* Leadership Team */}
+      {leadership.length > 0 && (
+        <Section className="py-16 md:py-20 bg-primary-50">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-2"
+            >
+              Leadership Team
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+              className="text-secondary-DEFAULT mb-10 max-w-2xl"
+            >
+              The directors leading GEN&apos;s programs and consulting practice.
+            </motion.p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {leadership.map((member, idx) => (
+                <motion.div
+                  key={member.slug}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.06 }}
+                >
+                  <TeamCard member={member} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+      )}
 
       {/* Clients & Beneficiaries */}
-      <Section className="py-16 md:py-20 bg-primary-50">
+      <Section className="py-16 md:py-20 bg-white">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,7 +139,7 @@ export default function OurTeamPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="bg-white rounded-lg p-4 border border-primary-200 flex items-center space-x-3"
+                className="bg-primary-50 rounded-lg p-4 border border-primary-200 flex items-center space-x-3"
               >
                 <div className="w-2 h-2 bg-accent-700 rounded-full flex-shrink-0" />
                 <span className="text-primary-900 text-sm font-medium">
