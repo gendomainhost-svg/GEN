@@ -31,7 +31,7 @@ export default function MegaMenu({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       role="menu"
-      className="absolute left-0 right-0 top-full z-40 border-t border-neutral-200 bg-white shadow-[0_12px_24px_-8px_rgba(15,23,42,0.12)]"
+      className="absolute left-0 right-0 top-full z-40 border-t border-white/15 bg-primary-900/95 shadow-2xl shadow-black/40 backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div
@@ -40,19 +40,19 @@ export default function MegaMenu({
           }`}
         >
           {hasFeatured && featured && (
-            <div className="md:col-span-1 flex flex-col justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-6">
+            <div className="md:col-span-1 flex flex-col justify-between rounded-lg border border-white/15 bg-white/5 p-6">
               <div>
-                <h3 className="font-serif text-xl font-bold text-neutral-900 mb-2">
+                <h3 className="font-serif text-xl font-bold text-white mb-2">
                   {featured.title}
                 </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
+                <p className="text-white/70 text-sm leading-relaxed">
                   {featured.blurb}
                 </p>
               </div>
               <Link
                 href={featured.href}
                 onClick={onLinkClick}
-                className="mt-6 inline-flex items-center gap-2 font-semibold text-sm text-accent-700 hover:text-accent-600 group"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-sm text-accent-400 hover:text-accent-300 group"
               >
                 {featured.cta ?? "Learn more"}
                 <ArrowRight
@@ -72,7 +72,7 @@ export default function MegaMenu({
           >
             {groups.map((group) => (
               <div key={group.heading}>
-                <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">
+                <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-white/50">
                   {group.heading}
                 </h4>
                 <ul className="space-y-3">
@@ -84,11 +84,11 @@ export default function MegaMenu({
                         role="menuitem"
                         className="group block"
                       >
-                        <span className="block text-sm font-medium text-neutral-900 transition-colors group-hover:text-accent-700">
+                        <span className="block text-sm font-medium text-white/90 transition-colors group-hover:text-white">
                           {link.name}
                         </span>
                         {link.description && (
-                          <span className="mt-0.5 block text-xs leading-snug text-neutral-500 transition-colors group-hover:text-neutral-700">
+                          <span className="mt-0.5 block text-xs leading-snug text-white/50 transition-colors group-hover:text-white/70">
                             {link.description}
                           </span>
                         )}

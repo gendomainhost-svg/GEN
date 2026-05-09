@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Briefcase } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,46 +14,6 @@ const heroImages = [
   "/images/Gemini_Generated_Image_gg0zeogg0zeogg0z.png",
   "/images/Gemini_Generated_Image_maxnbrmaxnbrmaxn.png",
 ];
-
-const stats = [
-  { value: 50, suffix: "+", label: "Programs Delivered" },
-  { value: 30, suffix: "+", label: "Countries Represented" },
-  { value: 500, suffix: "+", label: "Leaders Trained" },
-];
-
-function AnimatedCounter({
-  value,
-  suffix,
-  duration = 2000,
-}: {
-  value: number;
-  suffix: string;
-  duration?: number;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-    let start = 0;
-    const end = value;
-    const stepTime = Math.max(Math.floor(duration / end), 20);
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start >= end) clearInterval(timer);
-    }, stepTime);
-    return () => clearInterval(timer);
-  }, [isInView, value, duration]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}
-      {suffix}
-    </span>
-  );
-}
 
 // Floating particles for the hero
 function HeroParticles() {
@@ -91,7 +51,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 20000);
     return () => clearInterval(interval);
   }, []);
 
@@ -231,25 +191,6 @@ export default function Hero() {
               <Briefcase className="mr-2" size={20} />
               Advisory Solutions
             </Link>
-          </motion.div>
-
-          {/* Animated Stats */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-8 md:gap-12"
-          >
-            {stats.map((stat, i) => (
-              <div key={stat.label} className="text-left">
-                <p className="text-2xl md:text-3xl font-bold text-white mb-0.5">
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    duration={2000}
-                  />
-                </p>
-                <p className="text-white/60 text-sm">{stat.label}</p>
-              </div>
-            ))}
           </motion.div>
         </motion.div>
       </div>

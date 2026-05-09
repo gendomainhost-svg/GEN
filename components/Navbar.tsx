@@ -108,43 +108,57 @@ export default function Navbar() {
     setIsSearchOpen(false);
   };
 
-  const navShadow = isScrolled ? "shadow-md" : "shadow-sm";
+  const showUtilityBar = !isScrolled;
 
   const linkBase =
     "relative z-10 inline-flex items-center gap-1 rounded-md px-2 py-2 text-sm font-medium transition-colors";
-  const linkInactive = "text-neutral-700 hover:text-neutral-900";
-  const linkActive = "font-semibold text-accent-700";
+  const linkInactive = "text-white/80 hover:text-white";
+  const linkActive = "text-white font-semibold";
 
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`fixed left-0 right-0 top-0 z-50 border-b border-neutral-200 bg-white transition-shadow duration-300 ${navShadow}`}
+      className={`fixed left-0 right-0 top-0 z-50 border-b border-white/10 transition-all duration-500 ${
+        isScrolled
+          ? "glass-dark shadow-2xl shadow-black/10"
+          : "bg-primary-950/80 backdrop-blur-md"
+      }`}
     >
-      {/* Utility bar — Abt-style thin strip */}
-      <div className="hidden border-b border-neutral-100 bg-neutral-50 md:block">
-        <div className="mx-auto max-w-7xl px-6">
-          <ul className="flex items-center justify-end gap-x-8 py-2 text-xs">
-            {utilityLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-neutral-600 transition-colors hover:text-neutral-900"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <AnimatePresence initial={false}>
+        {showUtilityBar && (
+          <motion.div
+            key="utility-bar"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="hidden overflow-hidden border-b border-white/10 md:block"
+          >
+            <div className="mx-auto max-w-7xl px-6">
+              <ul className="flex items-center justify-end gap-x-8 py-2 text-xs">
+                {utilityLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-white/60 transition-colors hover:text-white"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="relative mx-auto max-w-7xl px-6 py-3 md:py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="group flex items-center space-x-2">
             <motion.span
-              className="font-serif text-2xl font-bold tracking-tight text-neutral-900"
+              className="font-serif text-2xl font-bold tracking-tight text-white"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
@@ -193,7 +207,7 @@ export default function Navbar() {
                   {hoveredLink === item.href && (
                     <motion.div
                       layoutId="navbar-hover"
-                      className="absolute inset-0 rounded-md bg-neutral-100"
+                      className="absolute inset-0 rounded-md bg-white/10"
                       transition={{
                         type: "spring",
                         stiffness: 400,
@@ -217,14 +231,14 @@ export default function Navbar() {
                     >
                       <span
                         className={
-                          isActive ? "border-b-2 border-accent-700 pb-0.5" : ""
+                          isActive ? "border-b-2 border-accent-400 pb-0.5" : ""
                         }
                       >
                         {item.name}
                       </span>
                       <ChevronDown
                         size={14}
-                        className={`shrink-0 text-neutral-500 transition-transform duration-200 ${
+                        className={`shrink-0 text-white/50 transition-transform duration-200 ${
                           isOpen ? "rotate-180" : ""
                         }`}
                       />
@@ -236,7 +250,7 @@ export default function Navbar() {
                     >
                       <span
                         className={
-                          isActive ? "border-b-2 border-accent-700 pb-0.5" : ""
+                          isActive ? "border-b-2 border-accent-400 pb-0.5" : ""
                         }
                       >
                         {item.name}
@@ -252,7 +266,7 @@ export default function Navbar() {
               aria-label={isSearchOpen ? "Close search" : "Open search"}
               aria-expanded={isSearchOpen}
               onClick={() => setIsSearchOpen((v) => !v)}
-              className="ml-1 rounded-md p-2 text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+              className="ml-1 rounded-md p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
             >
               {isSearchOpen ? <X size={18} /> : <Search size={18} />}
             </button>
@@ -260,7 +274,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="rounded-md p-2 text-neutral-800 md:hidden"
+            className="rounded-md p-2 text-white md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             whileTap={{ scale: 0.95 }}
@@ -303,17 +317,17 @@ export default function Navbar() {
               onSubmit={handleSearchSubmit}
               className="hidden overflow-hidden md:block"
             >
-              <div className="mt-3 flex items-center gap-2 rounded-md border border-neutral-200 bg-neutral-50 px-3 py-2">
-                <Search size={16} className="text-neutral-500" />
+              <div className="mt-3 flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-3 py-2 backdrop-blur-sm">
+                <Search size={16} className="text-white/60" />
                 <input
                   autoFocus
                   type="search"
                   placeholder="Search GEN..."
-                  className="flex-1 bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400"
+                  className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/50"
                 />
                 <button
                   type="submit"
-                  className="text-sm font-semibold text-accent-700 hover:text-accent-600"
+                  className="text-sm font-semibold text-accent-300 hover:text-accent-200"
                 >
                   Search
                 </button>
@@ -330,15 +344,15 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -10 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="mt-4 overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 shadow-lg md:hidden"
+              className="mt-4 overflow-hidden rounded-xl border border-white/20 bg-primary-900/90 p-4 backdrop-blur-md md:hidden"
             >
-              <div className="mb-4 flex flex-wrap gap-2 border-b border-neutral-100 pb-4">
+              <div className="mb-4 flex flex-wrap gap-2 border-b border-white/10 pb-4">
                 {utilityLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:border-neutral-300 hover:bg-white"
+                    className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/85 transition-colors hover:bg-white/10"
                   >
                     {link.name}
                   </Link>
@@ -375,7 +389,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.04 }}
-                    className="border-b border-neutral-100 last:border-b-0"
+                    className="border-b border-white/10 last:border-b-0"
                   >
                     <div className="flex items-center justify-between">
                       <Link
@@ -383,8 +397,8 @@ export default function Navbar() {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`flex-1 rounded-md py-3 pl-2 pr-2 transition-colors ${
                           isActive
-                            ? "font-semibold text-accent-700"
-                            : "text-neutral-800 hover:bg-neutral-50"
+                            ? "font-semibold text-accent-300"
+                            : "text-white/90 hover:bg-white/5"
                         }`}
                       >
                         {item.name}
@@ -403,7 +417,7 @@ export default function Navbar() {
                               prev === item.name ? null : item.name
                             )
                           }
-                          className="p-2 text-neutral-500 hover:text-neutral-800"
+                          className="p-2 text-white/60 hover:text-white"
                         >
                           <ChevronDown
                             size={18}
@@ -426,7 +440,7 @@ export default function Navbar() {
                         >
                           {item.groups!.map((group) => (
                             <div key={group.heading} className="mt-2 pl-3">
-                              <p className="mb-1 mt-3 text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+                              <p className="mb-1 mt-3 text-[10px] font-semibold uppercase tracking-wider text-white/45">
                                 {group.heading}
                               </p>
                               <ul className="space-y-1">
@@ -439,7 +453,7 @@ export default function Navbar() {
                                       onClick={() =>
                                         setIsMobileMenuOpen(false)
                                       }
-                                      className="block rounded-md py-2 px-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-accent-700"
+                                      className="block rounded-md py-2 px-2 text-sm text-white/85 hover:bg-white/5 hover:text-accent-300"
                                     >
                                       {link.name}
                                     </Link>
