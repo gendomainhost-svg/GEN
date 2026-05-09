@@ -31,28 +31,28 @@ export default function MegaMenu({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       role="menu"
-      className="absolute left-0 right-0 top-full mt-2 z-40"
+      className="absolute left-0 right-0 top-full z-40 border-t border-neutral-200 bg-white shadow-[0_12px_24px_-8px_rgba(15,23,42,0.12)]"
     >
-      <div className="mx-4 md:mx-8 lg:mx-auto lg:max-w-7xl glass-dark rounded-xl shadow-2xl shadow-black/30 overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
         <div
-          className={`grid gap-8 px-6 md:px-10 py-8 ${
+          className={`grid gap-10 py-10 md:py-12 ${
             hasFeatured ? "md:grid-cols-3" : "md:grid-cols-2"
           }`}
         >
           {hasFeatured && featured && (
-            <div className="md:col-span-1 flex flex-col justify-between bg-white/5 border border-white/10 rounded-lg p-5">
+            <div className="md:col-span-1 flex flex-col justify-between rounded-lg border border-neutral-200 bg-neutral-50 p-6">
               <div>
-                <h3 className="font-serif text-xl text-white mb-2">
+                <h3 className="font-serif text-xl font-bold text-neutral-900 mb-2">
                   {featured.title}
                 </h3>
-                <p className="text-white/70 text-sm leading-relaxed">
+                <p className="text-neutral-600 text-sm leading-relaxed">
                   {featured.blurb}
                 </p>
               </div>
               <Link
                 href={featured.href}
                 onClick={onLinkClick}
-                className="mt-5 inline-flex items-center gap-2 text-accent-400 hover:text-accent-300 font-medium text-sm group"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-sm text-accent-700 hover:text-accent-600 group"
               >
                 {featured.cta ?? "Learn more"}
                 <ArrowRight
@@ -66,13 +66,13 @@ export default function MegaMenu({
           <div
             className={`${
               hasFeatured ? "md:col-span-2" : "md:col-span-2"
-            } grid gap-8 ${
+            } grid gap-10 ${
               groups.length > 1 ? "sm:grid-cols-2" : "sm:grid-cols-1"
             }`}
           >
             {groups.map((group) => (
               <div key={group.heading}>
-                <h4 className="text-white/50 uppercase tracking-wider text-xs font-semibold mb-4">
+                <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.08em] text-neutral-500">
                   {group.heading}
                 </h4>
                 <ul className="space-y-3">
@@ -82,13 +82,13 @@ export default function MegaMenu({
                         href={link.href}
                         onClick={onLinkClick}
                         role="menuitem"
-                        className="block group"
+                        className="group block"
                       >
-                        <span className="block text-white/90 group-hover:text-white text-sm font-medium transition-colors">
+                        <span className="block text-sm font-medium text-neutral-900 transition-colors group-hover:text-accent-700">
                           {link.name}
                         </span>
                         {link.description && (
-                          <span className="block text-white/50 group-hover:text-white/70 text-xs mt-0.5 transition-colors">
+                          <span className="mt-0.5 block text-xs leading-snug text-neutral-500 transition-colors group-hover:text-neutral-700">
                             {link.description}
                           </span>
                         )}
