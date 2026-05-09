@@ -126,7 +126,7 @@ export default function ConsultingPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16 relative overflow-hidden">
+      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="w-full h-full bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900" />
         </div>

@@ -60,7 +60,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-28 pb-12 md:pt-32 md:pb-16">
+      <Section className="bg-primary-900 text-white pt-36 pb-12 md:pt-40 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

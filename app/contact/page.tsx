@@ -16,7 +16,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-28 md:pt-32 pb-12 md:pb-16">
+      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
