@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 import TeamPortrait from "./TeamPortrait";
 import type { TeamMember } from "@/app/data/team";
 
@@ -51,6 +53,29 @@ export default function TeamCard({ member, variant = "default" }: TeamCardProps)
                   </span>
                 ))}
               </div>
+            )}
+            {member.linkedinUrl && (
+              <span
+                role="link"
+                tabIndex={0}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(member.linkedinUrl, "_blank", "noopener,noreferrer");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(member.linkedinUrl, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-[#0A66C2] text-white rounded-lg text-xs font-semibold hover:bg-[#004182] transition-colors cursor-pointer"
+                aria-label={`View ${member.name}'s LinkedIn profile`}
+              >
+                <Linkedin size={16} />
+                LinkedIn
+              </span>
             )}
             <span className="mt-6 inline-flex items-center gap-2 text-accent-700 group-hover:text-accent-600 font-medium text-sm">
               View profile

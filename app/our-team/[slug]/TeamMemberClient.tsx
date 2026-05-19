@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, GraduationCap } from "lucide-react";
+import { ArrowLeft, GraduationCap, Linkedin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
@@ -66,6 +66,18 @@ export default function TeamMemberClient({
                 imageSrc={member.imageSrc}
                 size="lg"
               />
+              {member.linkedinUrl && (
+                <a
+                  href={member.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-[#0A66C2] text-white rounded-lg text-sm font-semibold hover:bg-[#004182] transition-colors"
+                  aria-label={`View ${member.name}'s LinkedIn profile`}
+                >
+                  <Linkedin size={18} />
+                  LinkedIn
+                </a>
+              )}
               {member.expertise && member.expertise.length > 0 && (
                 <div className="mt-6">
                   <h4 className="text-xs uppercase tracking-wider text-secondary-DEFAULT font-semibold mb-3">

@@ -74,6 +74,7 @@ export default function SmartContactForm() {
   const [inquiryType, setInquiryType] = useState<InquiryType | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const step1Form = useForm<Step1Data>({
     resolver: zodResolver(step1Schema),
@@ -101,23 +102,63 @@ export default function SmartContactForm() {
 
   const onStep2Submit = async (data: Step2Data) => {
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    
-    console.log("Form submitted:", { inquiryType, ...data });
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setStep(1);
-      setInquiryType(null);
+    setSubmitError(null);
+
+    const inquiryLabels: Record<InquiryType, string> = {
+      training: "Institutional Training",
+      consulting: "Advisory & Consulting",
+      partnership: "Partnership Inquiry",
+    };
+
+    const payload = {
+      form_type: "institutional" as const,
+      name: data.contactName.trim(),
+      from_name: data.contactName.trim(),
+      email: data.email.trim(),
+      reply_to: data.email.trim(),
+      organization: data.institutionName.trim(),
+      job_title: "",
+      country: "",
+      program_interest: inquiryType ? inquiryLabels[inquiryType] : "",
+      cohort_size: "",
+      training_objectives: data.primaryChallenge?.trim() ?? "",
+      subject: inquiryType ? inquiryLabels[inquiryType] : "GEN inquiry",
+      message: data.message.trim(),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let responseData: { error?: string } = {};
+      try {
+        responseData = await res.json();
+      } catch {
+        /* non-JSON response */
+      }
+
+      if (!res.ok) {
+        setSubmitError(
+          responseData.error ??
+            "Something went wrong sending your message. Please try again or email us directly."
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
       step1Form.reset();
       step2Form.reset();
-    }, 3000);
+    } catch (err) {
+      console.error("Contact send failed:", err);
+      setSubmitError(
+        "Unable to send your message right now. Please try again or email us directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleOptionSelect = (type: InquiryType) => {
@@ -137,10 +178,22 @@ export default function SmartContactForm() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary-900 mb-4">
             Thank You!
           </h2>
-          <p className="text-xl text-secondary-DEFAULT">
+          <p className="text-xl text-secondary-DEFAULT mb-8">
             Your inquiry has been submitted successfully. Our team will contact
             you shortly.
           </p>
+          <button
+            type="button"
+            onClick={() => {
+              setIsSubmitted(false);
+              setStep(1);
+              setInquiryType(null);
+              setSubmitError(null);
+            }}
+            className="text-accent-700 hover:text-accent-600 font-semibold"
+          >
+            Submit another inquiry
+          </button>
         </motion.div>
       </Section>
     );
@@ -342,6 +395,12 @@ export default function SmartContactForm() {
                       </p>
                     )}
                   </div>
+
+                  {submitError && (
+                    <p className="text-red-600 text-sm" role="alert">
+                      {submitError}
+                    </p>
+                  )}
 
                   {/* Submit Button */}
                   <button

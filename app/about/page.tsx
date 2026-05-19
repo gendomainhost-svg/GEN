@@ -5,10 +5,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import Section from "@/components/Section";
-import { BookOpen, Briefcase, Globe2, Target, User } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Globe2, Target } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import TeamPortrait from "@/components/team/TeamPortrait";
+import { getMemberBySlug } from "@/app/data/team";
 
 export default function AboutPage() {
+  const founder = getMemberBySlug("godwin-honu");
+
   const whyUSA = [
     {
       title: "Mature Institutional Systems",
@@ -104,37 +109,46 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Founder Profile */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="bg-primary-50 rounded-xl p-6 md:p-8 border border-primary-200 mb-10"
-          >
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-              <div className="w-24 h-24 bg-primary-200 rounded-full flex items-center justify-center flex-shrink-0">
-                <User className="text-primary-700" size={40} />
+          {founder && (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="bg-primary-50 rounded-xl p-6 md:p-8 border border-primary-200 mb-10"
+            >
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <div className="w-28 flex-shrink-0 mx-auto md:mx-0">
+                  <TeamPortrait
+                    initials={founder.initials}
+                    name={founder.name}
+                    imageSrc={founder.imageSrc}
+                    size="md"
+                  />
+                </div>
+                <div className="text-center md:text-left">
+                  <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-900 mb-1">
+                    {founder.name}
+                  </h3>
+                  <p className="text-accent-700 font-semibold text-sm mb-3">
+                    {founder.title}
+                  </p>
+                  {founder.bio[0] && (
+                    <p className="text-secondary-DEFAULT leading-relaxed">
+                      {founder.bio[0]}
+                    </p>
+                  )}
+                  <Link
+                    href={`/our-team/${founder.slug}`}
+                    className="mt-4 inline-flex items-center gap-2 text-accent-700 hover:text-accent-600 font-medium text-sm"
+                  >
+                    View full profile
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
-              <div>
-                <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-900 mb-1">
-                  Godwin Honu
-                </h3>
-                <p className="text-accent-700 font-semibold text-sm mb-3">
-                  Founder &amp; Principal
-                </p>
-                <p className="text-secondary-DEFAULT leading-relaxed">
-                  Godwin Honu is the founder and principal of Global Efficiency
-                  Network (GEN). With a deep commitment to strengthening
-                  institutional performance globally, he established GEN to
-                  bridge the gap between world-class operational practices and
-                  the organizations that need them most. His vision drives GEN's
-                  mission to connect institutions and professionals worldwide
-                  with high-standard learning, expertise, and operational
-                  practices drawn from the United States and beyond.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
           {/* Mission & Vision */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">

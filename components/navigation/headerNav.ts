@@ -33,7 +33,7 @@ export const utilityLinks: UtilityLink[] = [
   { name: "For Individuals", href: "/contact?type=individual" },
   { name: "For Institutions", href: "/contact?type=institutional" },
   { name: "For Partners", href: "/contact?type=partnership" },
-  { name: "Press", href: "#press" },
+  { name: "Press", href: "/contact" },
 ];
 
 export const mainNav: MainNavItem[] = [
