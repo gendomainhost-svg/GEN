@@ -55,6 +55,20 @@ const config: Config = {
         sans: ["var(--font-inter)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
       },
+      animation: {
+        "fade-in": "fade-in 0.7s ease-out forwards",
+        "hero-fade": "hero-fade 1.8s ease-in-out",
+      },
+      keyframes: {
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(12px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "hero-fade": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+      },
       backdropBlur: {
         xs: "2px",
       },

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import OptimizedPicture from "@/components/OptimizedPicture";
 
 type Size = "md" | "lg";
 
@@ -28,11 +28,10 @@ export default function TeamPortrait({
   if (imageSrc) {
     return (
       <div className={`${base} ${className}`}>
-        <Image
+        <OptimizedPicture
           src={imageSrc}
           alt={name ?? initials}
           fill
-          unoptimized
           sizes="(min-width: 1024px) 320px, (min-width: 640px) 240px, 90vw"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />

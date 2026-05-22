@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   GraduationCap,
   Briefcase,
@@ -65,60 +64,9 @@ const services = [
   },
 ];
 
-function TiltCard({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), {
-    stiffness: 300,
-    damping: 30,
-  });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), {
-    stiffness: 300,
-    damping: 30,
-  });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    x.set(px);
-    y.set(py);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 export default function ServicesSection() {
   return (
-    <Section id="services" className="bg-white dot-pattern py-24 md:py-28">
+    <Section id="services" className="bg-white dot-pattern py-24 md:py-28 defer-paint">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -126,14 +74,7 @@ export default function ServicesSection() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="text-center mb-14"
       >
-        <motion.span
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="section-label mb-4"
-        >
-          Our Services
-        </motion.span>
+        <span className="section-label mb-4">Our Services</span>
         <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary-900 mb-3">
           What We Do
         </h2>
@@ -144,7 +85,7 @@ export default function ServicesSection() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: "1200px" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => {
           const Icon = service.icon;
           const isLarge = service.size === "large";
@@ -163,19 +104,12 @@ export default function ServicesSection() {
               }}
               className={colSpan}
             >
-              <TiltCard
-                className="group relative card-elevated rounded-2xl p-6 md:p-8 cursor-default h-full"
-              >
-                <div className="flex flex-col h-full" style={{ transform: "translateZ(20px)" }}>
+              <div className="group relative card-elevated rounded-2xl p-6 md:p-8 cursor-default h-full md:hover:-translate-y-0.5 md:transition-transform md:duration-300">
+                <div className="flex flex-col h-full">
                   <div className="mb-4">
-                    {/* Animated icon container */}
-                    <motion.div
-                      className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-primary-100 text-primary-700 group-hover:bg-accent-700 group-hover:text-white transition-all duration-500 group-hover:shadow-lg group-hover:shadow-accent-700/20"
-                      whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                    >
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-primary-100 text-primary-700 group-hover:bg-accent-700 group-hover:text-white transition-all duration-500 group-hover:shadow-lg group-hover:shadow-accent-700/20">
                       <Icon size={28} />
-                    </motion.div>
+                    </div>
                     <h3 className="font-serif text-2xl font-bold text-primary-900 mb-3 group-hover:text-accent-800 transition-colors duration-300">
                       {service.title}
                     </h3>
@@ -200,9 +134,8 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Corner accent line */}
                 <div className="absolute top-0 left-0 w-0 h-1 bg-gradient-to-r from-accent-700 to-accent-500 group-hover:w-full transition-all duration-500 rounded-t-xl" />
-              </TiltCard>
+              </div>
             </motion.div>
           );
         })}

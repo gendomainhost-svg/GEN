@@ -1,14 +1,20 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ServicesSection from "@/components/ServicesSection";
-import HomeAbout from "@/components/HomeAbout";
-import HomeRecognition from "@/components/HomeRecognition";
-import ClientsBeneficiaries from "@/components/ClientsBeneficiaries";
-import SmartContactForm from "@/components/SmartContactForm";
-import StrategicPartners from "@/components/StrategicPartners";
 import Footer from "@/components/Footer";
-import CookieBanner from "@/components/CookieBanner";
 import ScrollProgress from "@/components/ScrollProgress";
+
+const ServicesSection = dynamic(() => import("@/components/ServicesSection"));
+const HomeAbout = dynamic(() => import("@/components/HomeAbout"));
+const HomeRecognition = dynamic(() => import("@/components/HomeRecognition"));
+const ClientsBeneficiaries = dynamic(
+  () => import("@/components/ClientsBeneficiaries")
+);
+const SmartContactForm = dynamic(() => import("@/components/SmartContactForm"));
+const StrategicPartners = dynamic(() => import("@/components/StrategicPartners"));
+const CookieBanner = dynamic(() => import("@/components/CookieBanner"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -27,4 +33,3 @@ export default function Home() {
     </main>
   );
 }
-

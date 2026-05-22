@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import OptimizedPicture from "@/components/OptimizedPicture";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
@@ -36,11 +36,12 @@ export default function ContactPage() {
       <Section className="py-16 md:py-20 bg-white relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <Image
+          <OptimizedPicture
             src="/images/CONTACT.png"
-            alt="Contact"
+            alt=""
             fill
             className="object-cover"
+            sizes="100vw"
           />
         </div>
 

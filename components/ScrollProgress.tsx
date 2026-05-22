@@ -1,20 +1,34 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      const scrollTop = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min(1, scrollTop / max) : 0);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-accent-700 via-accent-500 to-accent-700 z-[100] origin-left"
-      style={{ scaleX }}
+    <div
+      className="scroll-progress bg-gradient-to-r from-accent-700 via-accent-500 to-accent-700"
+      style={{ transform: `scaleX(${progress})` }}
+      aria-hidden
     />
   );
 }

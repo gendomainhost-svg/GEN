@@ -220,10 +220,23 @@
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #b91c1c, #dc2626, #b91c1c);
+  transform-origin: left;
   z-index: 100;
-  transition: width 0.1s linear;
+  will-change: transform;
+}
+
+.defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-hero-fade {
+    animation: none;
+  }
 }
 
 .card-3d {

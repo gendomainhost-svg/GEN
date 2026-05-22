@@ -15,7 +15,7 @@ import {
   GraduationCap,
   Eye,
 } from "lucide-react";
-import Image from "next/image";
+import OptimizedPicture from "@/components/OptimizedPicture";
 import Link from "next/link";
 import { getProgramsByCategory } from "@/app/data/programs";
 
@@ -142,11 +142,12 @@ export default function ProgramsPage() {
           >
             {/* Background Image */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
-              <Image
+              <OptimizedPicture
                 src="/images/COMPRO.png"
-                alt="Commissioned Programs"
+                alt=""
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="relative z-10">
