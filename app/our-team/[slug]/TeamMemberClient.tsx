@@ -25,11 +25,11 @@ export default function TeamMemberClient({
       <Navbar />
 
       {/* Header */}
-      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16">
+      <Section className="page-hero">
         <div className="max-w-5xl mx-auto">
           <Link
             href="/our-team"
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-secondary-DEFAULT hover:text-accent-700 text-sm mb-6 transition-colors"
           >
             <ArrowLeft size={16} />
             Back to Our Team
@@ -42,7 +42,7 @@ export default function TeamMemberClient({
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-2">
               {member.name}
             </h1>
-            <p className="text-accent-300 font-semibold text-lg">
+            <p className="text-accent-700 font-semibold text-lg">
               {member.title}
             </p>
           </motion.div>

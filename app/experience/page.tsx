@@ -114,7 +114,7 @@ export default function ExperiencePage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16">
+      <Section className="page-hero">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,10 +124,10 @@ export default function ExperiencePage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Learning Through Exposure
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-4">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT mb-4">
             Moving beyond theory to observe real systems in action
           </p>
-          <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-secondary-DEFAULT leading-relaxed max-w-2xl mx-auto">
             Experiential learning is central to GEN&apos;s model. Participants
             engage with real institutions, professionals, and systems to gain
             insights that classroom instruction alone cannot provide.
@@ -180,7 +180,7 @@ export default function ExperiencePage() {
 
                   {/* Step Number */}
                   <div className="text-center mb-4">
-                    <span className="inline-block w-10 h-10 bg-primary-900 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">
+                    <span className="inline-block w-10 h-10 bg-accent-700 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">
                       {step.step}
                     </span>
                     <h3 className="font-serif text-2xl font-bold text-primary-900 mb-3">
@@ -352,7 +352,7 @@ export default function ExperiencePage() {
       </Section>
 
       {/* CTA */}
-      <Section className="py-16 md:py-20 bg-primary-900 text-white">
+      <Section className="cta-band">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -363,7 +363,7 @@ export default function ExperiencePage() {
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
             Ready to Experience the Difference?
           </h2>
-          <p className="text-xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-xl text-secondary-DEFAULT mb-8 leading-relaxed">
             Join our experiential learning programs and transform observation
             into institutional improvement.
           </p>
@@ -377,7 +377,7 @@ export default function ExperiencePage() {
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center bg-transparent border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-white/10"
+              className="inline-flex items-center bg-white border-2 border-primary-300 hover:border-accent-500 text-primary-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-accent-50 shadow-soft"
             >
               Contact Us
             </a>

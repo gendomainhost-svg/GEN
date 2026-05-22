@@ -111,7 +111,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 pb-12 md:pt-40 md:pb-16">
+      <Section className="page-hero">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function AboutPage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             About GEN
           </h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT">
             An institutional learning and consulting platform dedicated to
             strengthening organizational performance across sectors and regions.
           </p>
@@ -186,12 +186,12 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-primary-900 text-white rounded-xl p-6 md:p-8 border border-primary-700"
+              className="card-elevated border-l-4 border-l-accent-600 p-6 md:p-8 bg-gradient-to-br from-white to-accent-50/30"
             >
-              <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-4">
                 Our Vision
               </h2>
-              <p className="text-white/90 text-base md:text-lg leading-relaxed">
+              <p className="text-secondary-DEFAULT text-base md:text-lg leading-relaxed">
                 A global ecosystem of efficient, accountable, and high-performing
                 institutions delivering tangible value to the people and
                 communities they serve.

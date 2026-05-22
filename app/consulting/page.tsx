@@ -126,9 +126,9 @@ export default function ConsultingPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16 relative overflow-hidden">
+      <Section className="page-hero relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <div className="w-full h-full bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900" />
+          <div className="w-full h-full bg-gradient-to-r from-accent-100/40 via-primary-50 to-accent-50/30" />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ export default function ConsultingPage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Institutional Advisory Services
           </h1>
-          <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT leading-relaxed">
             GEN provides advisory and consulting services focused on
             strengthening institutional efficiency, leadership, and
             performance. Our consulting engagements are practical,
@@ -310,7 +310,7 @@ export default function ConsultingPage() {
       </Section>
 
       {/* CTA */}
-      <Section className="py-16 md:py-20 bg-primary-900 text-white">
+      <Section className="cta-band">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -321,7 +321,7 @@ export default function ConsultingPage() {
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Institution?
           </h2>
-          <p className="text-xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-xl text-secondary-DEFAULT mb-8 leading-relaxed">
             Request a diagnostic assessment and discover how GEN can help
             strengthen your organization's performance.
           </p>

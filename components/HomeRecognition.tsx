@@ -12,7 +12,7 @@ const recognitionFocus = [
 
 export default function HomeRecognition() {
   return (
-    <section className="bg-primary-900 py-14 md:py-20 relative overflow-hidden">
+    <section className="bg-gradient-to-b from-white to-primary-50 py-16 md:py-24 relative overflow-hidden border-y border-primary-200">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Content */}
@@ -23,11 +23,11 @@ export default function HomeRecognition() {
             transition={{ duration: 0.6 }}
             className="text-center lg:text-left"
           >
-            <Award className="text-accent-500 mb-4 mx-auto lg:mx-0" size={40} />
-            <h2 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
+            <Award className="text-accent-600 mb-4 mx-auto lg:mx-0" size={40} />
+            <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-3">
               Honoring Institutional Leadership
             </h2>
-            <p className="text-white/90 mb-6">
+            <p className="text-secondary-DEFAULT mb-6">
               GEN recognizes institutions and leaders who demonstrate outstanding
               commitment to efficiency, innovation, accountability, and service
               delivery.
@@ -41,12 +41,12 @@ export default function HomeRecognition() {
                     className="text-accent-500 flex-shrink-0 mt-0.5"
                     size={18}
                   />
-                  <span className="text-white/80 text-sm">{item}</span>
+                  <span className="text-primary-800 text-sm">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <p className="text-white/60 text-sm italic mb-6">
+            <p className="text-primary-500 text-sm italic mb-6">
               Recognition is merit-based, non-political, and grounded in
               demonstrable outcomes.
             </p>
@@ -54,7 +54,7 @@ export default function HomeRecognition() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-transparent border-2 border-accent-500 text-accent-500 rounded-lg font-semibold hover:bg-accent-500 hover:text-primary-900 transition-all min-h-[44px]"
+              className="px-6 py-3 bg-transparent border-2 border-accent-600 text-accent-700 rounded-lg font-semibold hover:bg-accent-600 hover:text-white transition-all min-h-[44px]"
             >
               Nominate an Institution
             </motion.button>

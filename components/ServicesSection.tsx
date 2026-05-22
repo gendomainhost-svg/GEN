@@ -118,7 +118,7 @@ function TiltCard({
 
 export default function ServicesSection() {
   return (
-    <Section id="services" className="bg-primary-50 dot-pattern">
+    <Section id="services" className="bg-white dot-pattern py-24 md:py-28">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function ServicesSection() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+          className="section-label mb-4"
         >
           Our Services
         </motion.span>
@@ -164,7 +164,7 @@ export default function ServicesSection() {
               className={colSpan}
             >
               <TiltCard
-                className={`group relative bg-white rounded-xl p-6 md:p-8 shadow-lg transition-all duration-500 border border-primary-200 hover:border-accent-600/50 hover:shadow-[0_20px_60px_rgba(15,23,42,0.12)] cursor-default h-full`}
+                className="group relative card-elevated rounded-2xl p-6 md:p-8 cursor-default h-full"
               >
                 <div className="flex flex-col h-full" style={{ transform: "translateZ(20px)" }}>
                   <div className="mb-4">

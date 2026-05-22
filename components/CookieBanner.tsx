@@ -34,11 +34,11 @@ export default function CookieBanner() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-primary-900 text-white p-6 shadow-2xl border-t-2 border-accent-700"
+          className="fixed bottom-0 left-0 right-0 z-50 bg-white text-primary-900 p-6 shadow-2xl border-t-2 border-accent-600"
         >
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex-1">
-              <p className="text-white/90 leading-relaxed">
+              <p className="text-secondary-DEFAULT leading-relaxed">
                 We use cookies to improve your experience. By using this site,
                 you agree to our{" "}
                 <Link
@@ -53,7 +53,7 @@ export default function CookieBanner() {
             <div className="flex items-center gap-3">
               <button
                 onClick={handleDecline}
-                className="px-6 py-3 bg-transparent border-2 border-white/30 hover:border-white/50 text-white rounded-lg font-medium transition-all hover:bg-white/10"
+                className="px-6 py-3 bg-transparent border-2 border-primary-300 hover:border-primary-500 text-primary-800 rounded-lg font-medium transition-all hover:bg-primary-50"
               >
                 Decline
               </button>
@@ -65,7 +65,7 @@ export default function CookieBanner() {
               </button>
               <button
                 onClick={() => setShowBanner(false)}
-                className="md:hidden text-white/70 hover:text-white transition-colors"
+                className="md:hidden text-primary-500 hover:text-primary-900 transition-colors"
                 aria-label="Close banner"
               >
                 <X size={20} />

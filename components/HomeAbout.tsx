@@ -31,7 +31,7 @@ export default function HomeAbout() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+              className="section-label mb-4"
             >
               Our Methodology
             </motion.span>

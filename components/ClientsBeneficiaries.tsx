@@ -15,38 +15,38 @@ const clients = [
   {
     name: "Government Ministries, Agencies & Public Institutions",
     icon: Landmark,
-    color: "from-blue-500/10 to-blue-600/5",
-    iconColor: "text-blue-600",
+    color: "from-accent-50 to-white",
+    iconColor: "text-accent-700",
   },
   {
     name: "Legislative & Oversight Bodies",
     icon: Building2,
-    color: "from-purple-500/10 to-purple-600/5",
-    iconColor: "text-purple-600",
+    color: "from-primary-50 to-white",
+    iconColor: "text-primary-700",
   },
   {
     name: "Service-Oriented Private Organizations",
     icon: Briefcase,
-    color: "from-emerald-500/10 to-emerald-600/5",
-    iconColor: "text-emerald-600",
+    color: "from-accent-50/80 to-white",
+    iconColor: "text-accent-600",
   },
   {
     name: "Financial Institutions & Infrastructure Operators",
     icon: DollarSign,
-    color: "from-amber-500/10 to-amber-600/5",
-    iconColor: "text-amber-600",
+    color: "from-primary-100/50 to-white",
+    iconColor: "text-primary-600",
   },
   {
     name: "Manufacturing & Logistics Organizations",
     icon: Factory,
-    color: "from-cyan-500/10 to-cyan-600/5",
-    iconColor: "text-cyan-600",
+    color: "from-accent-50 to-primary-50",
+    iconColor: "text-accent-700",
   },
   {
     name: "NGOs & International Institutions",
     icon: Globe2,
-    color: "from-rose-500/10 to-rose-600/5",
-    iconColor: "text-rose-600",
+    color: "from-white to-accent-50/60",
+    iconColor: "text-accent-600",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function ClientsBeneficiaries() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+          className="section-label mb-4"
         >
           Clients & Beneficiaries
         </motion.span>

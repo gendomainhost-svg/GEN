@@ -110,7 +110,7 @@ export default function ProgramDetailClient({ slug }: ProgramDetailClientProps) 
       <motion.div
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`sticky top-0 z-40 bg-primary-900 text-white py-6 shadow-lg transition-all ${
+        className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-primary-200 text-primary-900 py-6 shadow-sm transition-all ${
           isSticky ? "py-4" : ""
         }`}
       >
@@ -235,13 +235,13 @@ export default function ProgramDetailClient({ slug }: ProgramDetailClientProps) 
           <div className="lg:col-span-3">
             <div className="lg:sticky lg:top-24 space-y-6">
               {/* Next Cohort */}
-              <div className="bg-primary-900 rounded-xl p-6 text-white">
-                <h3 className="font-serif text-xl font-bold mb-4">Next Cohort</h3>
-                <div className="flex items-center mb-4">
-                  <Calendar className="mr-2" size={20} />
+              <div className="card-elevated border-l-4 border-l-accent-600 rounded-xl p-6 bg-gradient-to-br from-white to-accent-50/40">
+                <h3 className="font-serif text-xl font-bold text-primary-900 mb-4">Next Cohort</h3>
+                <div className="flex items-center mb-4 text-primary-800">
+                  <Calendar className="mr-2 text-accent-700" size={20} />
                   <span className="text-lg font-semibold">March 15, 2024</span>
                 </div>
-                <p className="text-white/70 text-sm mb-6">
+                <p className="text-secondary-DEFAULT text-sm mb-6">
                   Applications close February 28, 2024
                 </p>
               </div>

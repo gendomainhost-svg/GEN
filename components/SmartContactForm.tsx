@@ -199,7 +199,7 @@ export default function SmartContactForm() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+          className="section-label mb-4"
         >
           Engage GEN
         </motion.span>
@@ -393,7 +393,7 @@ export default function SmartContactForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-primary-900 hover:bg-primary-800 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-accent-700 hover:bg-accent-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>

@@ -51,7 +51,7 @@ export default function ProgramsPage() {
       <Navbar />
       
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16">
+      <Section className="page-hero">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function ProgramsPage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Program Pathways
           </h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT">
             Select the learning model that fits your needs
           </p>
         </motion.div>
@@ -138,7 +138,7 @@ export default function ProgramsPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             whileHover={{ scale: 1.02 }}
-            className="bg-primary-900 text-white rounded-xl p-8 md:p-12 border-2 border-primary-800 hover:border-accent-700 transition-all shadow-lg hover:shadow-xl relative overflow-hidden"
+            className="bg-white text-primary-900 rounded-xl p-8 md:p-12 border-2 border-primary-200 hover:border-accent-600 transition-all shadow-lg hover:shadow-xl relative overflow-hidden"
           >
             {/* Background Image */}
             <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -158,7 +158,7 @@ export default function ProgramsPage() {
                 <h2 className="font-serif text-3xl font-bold">
                   Commissioned & Custom
                 </h2>
-                <p className="text-white/70 mt-1">
+                <p className="text-secondary-DEFAULT mt-1">
                   Institutions & Ministries
                 </p>
               </div>

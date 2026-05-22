@@ -15,42 +15,42 @@ const partnerTypes = [
   {
     name: "Universities & Academic Institutions",
     icon: GraduationCap,
-    color: "text-blue-600",
+    color: "text-accent-700",
   },
   {
     name: "Government Agencies & Public Institutions",
     icon: Shield,
-    color: "text-purple-600",
+    color: "text-primary-700",
   },
   {
     name: "Service-Oriented Private Organizations",
     icon: Building2,
-    color: "text-green-600",
+    color: "text-accent-600",
   },
   {
     name: "Professional Firms & Consultants",
     icon: Briefcase,
-    color: "text-amber-600",
+    color: "text-primary-600",
   },
   {
     name: "Technology & Solution Providers",
     icon: Cpu,
-    color: "text-cyan-600",
+    color: "text-accent-700",
   },
   {
     name: "Universities & Academic Institutions",
     icon: GraduationCap,
-    color: "text-blue-600",
+    color: "text-accent-700",
   },
   {
     name: "Government Agencies & Public Institutions",
     icon: Shield,
-    color: "text-purple-600",
+    color: "text-primary-700",
   },
   {
     name: "Service-Oriented Private Organizations",
     icon: Building2,
-    color: "text-green-600",
+    color: "text-accent-600",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function StrategicPartners() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary-900/5 text-primary-700 text-sm font-semibold mb-4 border border-primary-200"
+          className="section-label mb-4"
         >
           Networks & Partnerships
         </motion.span>

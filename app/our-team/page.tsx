@@ -21,7 +21,7 @@ export default function OurTeamPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 pb-12 md:pt-40 md:pb-16">
+      <Section className="page-hero">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function OurTeamPage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Our Team
           </h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT">
             Meet the people driving GEN&apos;s mission to strengthen
             institutional performance worldwide.
           </p>
@@ -107,7 +107,7 @@ export default function OurTeamPage() {
       )}
 
       {/* CTA */}
-      <Section className="py-16 md:py-20 bg-primary-900 text-white">
+      <Section className="cta-band">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function OurTeamPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
             Work With Us
           </h2>
-          <p className="text-lg text-white/90 mb-8 leading-relaxed">
+          <p className="text-lg text-secondary-DEFAULT mb-8 leading-relaxed">
             GEN welcomes engagement from institutions, partners, and
             professionals worldwide.
           </p>

@@ -45,7 +45,7 @@ export default function LegalLayout({
                       href={page.href}
                       className={`block px-4 py-3 rounded-lg transition-all ${
                         pathname === page.href
-                          ? "bg-primary-900 text-white font-semibold"
+                          ? "bg-accent-700 text-white font-semibold"
                           : "text-secondary-DEFAULT hover:bg-primary-50 hover:text-primary-900"
                       }`}
                     >

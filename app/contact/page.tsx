@@ -15,7 +15,7 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Hero */}
-      <Section className="bg-primary-900 text-white pt-36 md:pt-40 pb-12 md:pb-16">
+      <Section className="page-hero">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,7 +25,7 @@ export default function ContactPage() {
           <h1 className="font-serif text-4xl md:text-5xl font-bold mb-3">
             Contact GEN
           </h1>
-          <p className="text-lg md:text-xl text-white/90">
+          <p className="text-lg md:text-xl text-secondary-DEFAULT">
             Get in touch with our team. We're here to help you find the right
             program or consulting solution.
           </p>
