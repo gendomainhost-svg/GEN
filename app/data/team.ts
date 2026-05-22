@@ -7,6 +7,8 @@ export interface TeamMember {
   category: TeamCategory;
   initials: string;
   bio: string[];
+  /** Short teaser for About / team listing; full bio stays on profile page */
+  bioSummary?: string;
   expertise?: string[];
   education?: string[];
   imageSrc?: string;
@@ -49,6 +51,8 @@ export const teamMembers: TeamMember[] = [
     category: "advisor",
     initials: "HV",
     imageSrc: "/team/harshith-varma-rudraraju.png",
+    bioSummary:
+      "Harshith Varma is GEN's Technical Advisor, helping partner organizations adopt secure, reliable AI—from strategy and integration through day-to-day management.",
     bio: [
       "Harshith Varma is a Technical Advisor at Global Efficiency Network, dedicated to helping businesses transform their operations through Artificial Intelligence. With a strong background in Data Science, he serves as the central manager for organizations looking to build and integrate smart technology into their daily workflows. He oversees the entire journey of bringing AI into a business, from the initial strategy to the final, day-to-day management of the software.",
       "Acting as the primary technical guide, Harshith specializes in designing custom AI systems that can instantly read, understand, and organize massive amounts of company data. He helps organizations turn scattered documents and complex information into clear, actionable insights. A critical part of his management role is ensuring the safety and reliability of these new tools—he strictly oversees the AI to ensure it provides highly accurate answers and eliminates the risk of the system making up false information.",

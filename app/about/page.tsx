@@ -11,8 +11,54 @@ import Link from "next/link";
 import TeamPortrait from "@/components/team/TeamPortrait";
 import { getMemberBySlug } from "@/app/data/team";
 
+function TeamHighlightCard({ member }: { member: NonNullable<ReturnType<typeof getMemberBySlug>> }) {
+  const teaser = member.bioSummary ?? member.bio[0];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.15 }}
+      className="bg-primary-50 rounded-xl p-6 md:p-8 border border-primary-200"
+    >
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+        <div className="w-28 flex-shrink-0 mx-auto md:mx-0">
+          <TeamPortrait
+            initials={member.initials}
+            name={member.name}
+            imageSrc={member.imageSrc}
+            size="md"
+          />
+        </div>
+        <div className="text-center md:text-left">
+          <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-900 mb-1">
+            {member.name}
+          </h3>
+          <p className="text-accent-700 font-semibold text-sm mb-3">
+            {member.title}
+          </p>
+          {teaser && (
+            <p className="text-secondary-DEFAULT leading-relaxed">{teaser}</p>
+          )}
+          <Link
+            href={`/our-team/${member.slug}`}
+            className="mt-4 inline-flex items-center gap-2 text-accent-700 hover:text-accent-600 font-medium text-sm"
+          >
+            View full profile
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function AboutPage() {
-  const founder = getMemberBySlug("godwin-honu");
+  const teamHighlights = [
+    getMemberBySlug("godwin-honu"),
+    getMemberBySlug("harshith-varma-rudraraju"),
+  ].filter((m): m is NonNullable<typeof m> => m !== undefined);
 
   const whyUSA = [
     {
@@ -108,46 +154,13 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          {/* Founder Profile */}
-          {founder && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-primary-50 rounded-xl p-6 md:p-8 border border-primary-200 mb-10"
-            >
-              <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                <div className="w-28 flex-shrink-0 mx-auto md:mx-0">
-                  <TeamPortrait
-                    initials={founder.initials}
-                    name={founder.name}
-                    imageSrc={founder.imageSrc}
-                    size="md"
-                  />
-                </div>
-                <div className="text-center md:text-left">
-                  <h3 className="font-serif text-xl md:text-2xl font-bold text-primary-900 mb-1">
-                    {founder.name}
-                  </h3>
-                  <p className="text-accent-700 font-semibold text-sm mb-3">
-                    {founder.title}
-                  </p>
-                  {founder.bio[0] && (
-                    <p className="text-secondary-DEFAULT leading-relaxed">
-                      {founder.bio[0]}
-                    </p>
-                  )}
-                  <Link
-                    href={`/our-team/${founder.slug}`}
-                    className="mt-4 inline-flex items-center gap-2 text-accent-700 hover:text-accent-600 font-medium text-sm"
-                  >
-                    View full profile
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
+          {/* Team highlights */}
+          {teamHighlights.length > 0 && (
+            <div className="space-y-6 mb-10">
+              {teamHighlights.map((member) => (
+                <TeamHighlightCard key={member.slug} member={member} />
+              ))}
+            </div>
           )}
 
           {/* Mission & Vision */}

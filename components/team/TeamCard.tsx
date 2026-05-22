@@ -35,9 +35,9 @@ export default function TeamCard({ member, variant = "default" }: TeamCardProps)
             <p className="text-accent-700 font-semibold mb-4">
               {member.title}
             </p>
-            {member.bio[0] && (
+            {(member.bioSummary ?? member.bio[0]) && (
               <p className="text-secondary-DEFAULT leading-relaxed text-base md:text-lg">
-                {member.bio[0]}
+                {member.bioSummary ?? member.bio[0]}
               </p>
             )}
             {member.expertise && member.expertise.length > 0 && (
