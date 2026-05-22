@@ -3,6 +3,10 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
+import {
+  ContactEmailError,
+  sendContactEmail,
+} from "@/lib/contactEmail";
 
 interface ContactFormValues {
   name: string;
@@ -55,34 +59,16 @@ export default function ContactForm() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(buildPayload()),
-      });
-
-      let data: { error?: string } = {};
-      try {
-        data = await res.json();
-      } catch {
-        /* non-JSON response */
-      }
-
-      if (!res.ok) {
-        setSubmitError(
-          data.error ??
-            "Something went wrong sending your message. Please try again or email us directly."
-        );
-        return;
-      }
-
+      await sendContactEmail(buildPayload());
       setShowSuccess(true);
       setFormData({ ...emptyFormData });
       setTimeout(() => setShowSuccess(false), 5000);
     } catch (err) {
       console.error("Contact send failed:", err);
       setSubmitError(
-        "Something went wrong sending your message. Please try again or email us directly."
+        err instanceof ContactEmailError
+          ? err.message
+          : "Something went wrong sending your message. Please try again or email us directly."
       );
     } finally {
       setIsSubmitting(false);

@@ -1,4 +1,4 @@
-export type TeamCategory = "founder" | "leadership";
+export type TeamCategory = "founder" | "leadership" | "advisor";
 
 export interface TeamMember {
   slug: string;
@@ -41,6 +41,28 @@ export const teamMembers: TeamMember[] = [
     education: [
       "Master of Public Administration, University of Ghana Business School",
     ],
+  },
+  {
+    slug: "harshith-varma-rudraraju",
+    name: "Harshith Varma",
+    title: "Technical Advisor",
+    category: "advisor",
+    initials: "HV",
+    imageSrc: "/team/harshith-varma-rudraraju.png",
+    bio: [
+      "Harshith Varma is a Technical Advisor at Global Efficiency Network, dedicated to helping businesses transform their operations through Artificial Intelligence. With a strong background in Data Science, he serves as the central manager for organizations looking to build and integrate smart technology into their daily workflows. He oversees the entire journey of bringing AI into a business, from the initial strategy to the final, day-to-day management of the software.",
+      "Acting as the primary technical guide, Harshith specializes in designing custom AI systems that can instantly read, understand, and organize massive amounts of company data. He helps organizations turn scattered documents and complex information into clear, actionable insights. A critical part of his management role is ensuring the safety and reliability of these new tools—he strictly oversees the AI to ensure it provides highly accurate answers and eliminates the risk of the system making up false information.",
+      "Beyond smart text tools, Harshith directs the rollout of a wide variety of AI solutions tailored to a company's specific needs. He manages the development of predictive tools that help businesses forecast trends and make proactive decisions, as well as visual recognition systems that automate manual tasks. By managing the underlying technology and standardizing the digital tools used by partner organizations, Harshith ensures they can smoothly, safely, and cost-effectively step into the future of AI-driven business.",
+    ],
+    expertise: [
+      "AI Strategy & Integration",
+      "Document Intelligence & Insights",
+      "AI Safety & Reliability",
+      "Predictive Analytics",
+      "Visual Recognition & Automation",
+      "Enterprise Technology Management",
+    ],
+    education: ["Master of Science in Data Science"],
   },
 ];
 

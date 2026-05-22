@@ -27,12 +27,34 @@ A modern, institutional-grade website built with Next.js 14, TypeScript, and Tai
 npm install
 ```
 
-2. Run the development server:
+2. Copy `.env.example` to `.env.local` and add your [EmailJS](https://www.emailjs.com/) keys (see **Contact forms** below).
+
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3005](http://localhost:3005) in your browser.
+
+## Contact forms (EmailJS)
+
+Homepage and `/contact` forms send email through **EmailJS** in the browser, which works with the static Cloudflare export (no server required).
+
+1. Sign in at [EmailJS](https://dashboard.emailjs.com/).
+2. **Email Services** — add a service (e.g. Gmail) and connect `geninquirer@gmail.com` or your inbox.
+3. **Email Templates** — create a template:
+   - **Subject:** `GEN website — {{form_type}} — {{name}}`
+   - **Content:** paste the HTML from [`emailjs-contact-template-body.html`](emailjs-contact-template-body.html)
+   - **Reply-To:** `{{reply_to}}` (if your provider supports it in template settings)
+4. **Account → API Keys** — copy your **Public Key**.
+5. In `.env.local` set:
+   - `NEXT_PUBLIC_EMAILJS_SERVICE_ID` (from your service)
+   - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` (from your template)
+   - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
+6. In EmailJS, enable **domain restrictions** on the public key for your production domain.
+7. Restart `npm run dev` after changing env vars.
+
+For **Cloudflare Pages**, add the same three `NEXT_PUBLIC_*` variables in the project **Environment variables** settings, then redeploy.
 
 ## Project Structure
 
@@ -80,7 +102,10 @@ The site is built as a **static export** so it runs on Cloudflare Pages without 
    - **Framework preset:** None (or "Next.js (Static HTML Export)" if available)
    - **Build command:** `npm run build`
    - **Build output directory:** `out`
-3. Set **Environment variables** (if any): none required.
+3. Set **Environment variables** (Production):
+   - `NEXT_PUBLIC_EMAILJS_SERVICE_ID`
+   - `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID`
+   - `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY`
 4. Deploy. The site will be served from the `out` folder.
 
 **Note:** The first load is optimized: the map loads lazily and images use unoptimized static assets for compatibility with static hosting.

@@ -12,7 +12,9 @@ import { getMembersByCategory } from "@/app/data/team";
 
 export default function OurTeamPage() {
   const founders = getMembersByCategory("founder");
+  const advisors = getMembersByCategory("advisor");
   const leadership = getMembersByCategory("leadership");
+  const featuredTeam = [...founders, ...advisors];
 
   return (
     <main className="min-h-screen">
@@ -37,20 +39,11 @@ export default function OurTeamPage() {
       </Section>
 
       {/* Founder & Executive Director */}
-      {founders.length > 0 && (
+      {featuredTeam.length > 0 && (
         <Section className="py-16 md:py-20 bg-white">
           <div className="max-w-5xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-8"
-            >
-              Founder &amp; Executive Director
-            </motion.h2>
-
-            <div className="space-y-6">
-              {founders.map((member, idx) => (
+            <div className="space-y-12">
+              {featuredTeam.map((member, idx) => (
                 <motion.div
                   key={member.slug}
                   initial={{ opacity: 0, y: 16 }}
@@ -58,6 +51,14 @@ export default function OurTeamPage() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.08 }}
                 >
+                  <motion.h2
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-6"
+                  >
+                    {member.title}
+                  </motion.h2>
                   <TeamCard member={member} variant="featured" />
                 </motion.div>
               ))}

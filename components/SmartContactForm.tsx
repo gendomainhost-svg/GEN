@@ -15,6 +15,11 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import Section from "./Section";
+import {
+  ContactEmailError,
+  sendContactEmail,
+  type ContactEmailParams,
+} from "@/lib/contactEmail";
 
 // Form Schemas
 const step1Schema = z.object({
@@ -110,8 +115,8 @@ export default function SmartContactForm() {
       partnership: "Partnership Inquiry",
     };
 
-    const payload = {
-      form_type: "institutional" as const,
+    const payload: ContactEmailParams = {
+      form_type: "institutional",
       name: data.contactName.trim(),
       from_name: data.contactName.trim(),
       email: data.email.trim(),
@@ -127,34 +132,16 @@ export default function SmartContactForm() {
     };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      let responseData: { error?: string } = {};
-      try {
-        responseData = await res.json();
-      } catch {
-        /* non-JSON response */
-      }
-
-      if (!res.ok) {
-        setSubmitError(
-          responseData.error ??
-            "Something went wrong sending your message. Please try again or email us directly."
-        );
-        return;
-      }
-
+      await sendContactEmail(payload);
       setIsSubmitted(true);
       step1Form.reset();
       step2Form.reset();
     } catch (err) {
       console.error("Contact send failed:", err);
       setSubmitError(
-        "Unable to send your message right now. Please try again or email us directly."
+        err instanceof ContactEmailError
+          ? err.message
+          : "Unable to send your message right now. Please try again or email us directly."
       );
     } finally {
       setIsSubmitting(false);
