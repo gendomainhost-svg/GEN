@@ -59,28 +59,20 @@ For **Cloudflare Pages**, add the same three `NEXT_PUBLIC_*` variables in the pr
 ## Project Structure
 
 ```
-├── app/
-│   ├── layout.tsx          # Root layout with font configuration
-│   ├── page.tsx             # Main page
-│   └── globals.css          # Global styles and Tailwind directives
-├── components/
-│   ├── Navbar.tsx           # Responsive navigation
-│   ├── Hero.tsx             # Hero section with animations
-│   ├── ServicesSection.tsx  # Bento grid services
-│   ├── AboutSection.tsx     # About & methodology
-│   ├── ConsultingShowcase.tsx # Consulting services accordion
-│   ├── Footer.tsx           # Footer with contact info
-│   └── Section.tsx          # Reusable section wrapper
-└── tailwind.config.ts       # Tailwind configuration with custom colors
+├── app/                    # Pages, data, legal routes
+├── components/             # UI (Navbar, Hero, Footer, forms, etc.)
+├── lib/contactEmail.ts     # EmailJS client helper
+├── public/images/          # Static assets served at /images/*
+└── public/team/            # Team headshots
 ```
 
 ## Design System
 
 ### Colors
-- **Primary**: Deep Navy Blue (#0F172A)
-- **Secondary**: Slate Grey (#64748B)
-- **Accent**: Muted Gold/Bronze (#B45309)
-- **Background Light**: Off-white/Cream (#F8FAFC)
+- **Primary**: Warm stone neutrals
+- **Secondary**: Slate grey
+- **Accent**: Institutional red
+- **Background**: White and light stone
 
 ### Typography
 - **Body**: Inter (clean, readable, modern)
