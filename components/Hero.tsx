@@ -56,7 +56,7 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
-              href="#services"
+              href="/programs"
               className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md bg-accent-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-800"
             >
               Explore Programs
