@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GEN_POSTER_ALT, GEN_POSTER_ASPECT, GEN_POSTER_SHARE_PATH } from "@/lib/gen-poster";
 
 export const defaultMetadata: Metadata = {
   title: {
@@ -41,10 +42,10 @@ export const defaultMetadata: Metadata = {
       "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
     images: [
       {
-        url: "/images/gen.webp",
-        width: 1376,
-        height: 743,
-        alt: "Global Efficiency Network (GEN)",
+        url: GEN_POSTER_SHARE_PATH,
+        width: GEN_POSTER_ASPECT.width,
+        height: GEN_POSTER_ASPECT.height,
+        alt: GEN_POSTER_ALT,
       },
     ],
   },
@@ -53,7 +54,7 @@ export const defaultMetadata: Metadata = {
     title: "Global Efficiency Network (GEN)",
     description:
       "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
-    images: ["/images/gen.webp"],
+    images: [GEN_POSTER_SHARE_PATH],
   },
   robots: {
     index: true,
