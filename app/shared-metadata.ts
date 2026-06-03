@@ -46,6 +46,7 @@ export const defaultMetadata: Metadata = {
         width: GEN_POSTER_ASPECT.width,
         height: GEN_POSTER_ASPECT.height,
         alt: GEN_POSTER_ALT,
+        type: "image/png",
       },
     ],
   },

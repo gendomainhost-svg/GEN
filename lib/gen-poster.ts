@@ -13,4 +13,4 @@ export const GEN_POSTER_ASPECT = {
   height: config.height,
 } as const;
 
-export const GEN_POSTER_SHARE_PATH = "/og/gen-poster.webp";
+export const GEN_POSTER_SHARE_PATH = "/og/share.png";
