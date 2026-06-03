@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import Section from "@/components/Section";
 import { ArrowRight, BookOpen, Briefcase, Globe2, Target } from "lucide-react";
-import OptimizedPicture from "@/components/OptimizedPicture";
 import Link from "next/link";
 import TeamPortrait from "@/components/team/TeamPortrait";
 import { getMemberBySlug } from "@/app/data/team";
@@ -248,17 +247,8 @@ export default function AboutPage() {
       </Section>
 
       {/* Why the United States */}
-      <Section className="py-16 md:py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
-          <OptimizedPicture
-            src="/images/WHYUSA.png"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto">
+      <Section className="py-16 md:py-20 bg-white">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

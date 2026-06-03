@@ -41,10 +41,10 @@ export const defaultMetadata: Metadata = {
       "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
     images: [
       {
-        url: "/images/WHYUSA.webp",
-        width: 1200,
-        height: 630,
-        alt: "Global Efficiency Network - Capacity Building. Consulting. Institutional Excellence.",
+        url: "/images/gen.webp",
+        width: 1376,
+        height: 743,
+        alt: "Global Efficiency Network (GEN)",
       },
     ],
   },
@@ -53,7 +53,7 @@ export const defaultMetadata: Metadata = {
     title: "Global Efficiency Network (GEN)",
     description:
       "Global Efficiency Network (GEN) is a U.S.-based organization that designs and delivers high-standard capacity-building, consulting, and experiential learning programs for institutions and professionals worldwide.",
-    images: ["/images/WHYUSA.webp"],
+    images: ["/images/gen.webp"],
   },
   robots: {
     index: true,
