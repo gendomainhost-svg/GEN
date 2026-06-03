@@ -33,8 +33,8 @@ const svg = `
 const outDir = path.join(ROOT, "public/og");
 await fs.mkdir(outDir, { recursive: true });
 
-const webpOut = path.join(outDir, "share.webp");
-const pngOut = path.join(outDir, "share.png");
+const webpOut = path.join(outDir, "poster.webp");
+const pngOut = path.join(outDir, "poster.png");
 
 await sharp(Buffer.from(svg)).webp({ quality: 90 }).toFile(webpOut);
 await sharp(Buffer.from(svg)).png().toFile(pngOut);

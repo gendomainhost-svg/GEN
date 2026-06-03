@@ -1,4 +1,6 @@
-/images/gen.webp /og/share.png 301
-/images/gen.jpeg /og/share.png 301
-/og/gen-poster.webp /og/share.png 301
-/og/gen-poster.png /og/share.png 301
+/images/gen.webp /og/poster.png 301
+/images/gen.jpeg /og/poster.png 301
+/og/gen-poster.webp /og/poster.png 301
+/og/gen-poster.png /og/poster.png 301
+/og/share.webp /og/poster.png 301
+/og/share.png /og/poster.png 301
