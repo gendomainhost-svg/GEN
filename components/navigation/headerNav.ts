@@ -46,6 +46,12 @@ export const mainNav: MainNavItem[] = [
         heading: "Program Pathways",
         links: [
           {
+            name: "California Executive Learning Program",
+            href: "/programs/california-executive-learning",
+            description:
+              "Flagship program on workforce development, job creation & economic growth",
+          },
+          {
             name: "Open-Enrollment Programs",
             href: "/programs",
             description: "Public cohorts open to qualified individuals",
@@ -84,11 +90,11 @@ export const mainNav: MainNavItem[] = [
       },
     ],
     featured: {
-      title: "Browse all programs",
+      title: "California Executive Learning Program",
       blurb:
-        "Explore the full catalogue of open-enrollment and commissioned learning experiences.",
-      href: "/programs",
-      cta: "View catalogue",
+        "Flagship five-day executive learning program in California, September 14–18, 2026. Expressions of interest now open.",
+      href: "/programs/california-executive-learning",
+      cta: "Register interest",
     },
   },
   {

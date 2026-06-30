@@ -18,6 +18,10 @@ import {
 import OptimizedPicture from "@/components/OptimizedPicture";
 import Link from "next/link";
 import { getProgramsByCategory } from "@/app/data/programs";
+import {
+  FLAGSHIP_PROGRAM,
+  FLAGSHIP_PROGRAM_PATH,
+} from "@/app/data/flagshipProgram";
 
 export default function ProgramsPage() {
   const openPrograms = getProgramsByCategory("Open");
@@ -64,6 +68,41 @@ export default function ProgramsPage() {
           <p className="text-lg md:text-xl text-secondary-DEFAULT">
             Select the learning model that fits your needs
           </p>
+        </motion.div>
+      </Section>
+
+      {/* Flagship Program */}
+      <Section className="py-12 md:py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="rounded-2xl border-2 border-accent-200 bg-gradient-to-br from-accent-50/50 via-white to-primary-50 p-8 md:p-12 shadow-soft-lg"
+        >
+          <span className="section-label mb-4">Flagship Program</span>
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-primary-900 mb-4">
+            {FLAGSHIP_PROGRAM.shortTitle}
+          </h2>
+          <p className="text-secondary-DEFAULT leading-relaxed mb-6 max-w-3xl">
+            {FLAGSHIP_PROGRAM.heroDescription}
+          </p>
+          <div className="flex flex-wrap gap-4 text-sm text-secondary-DEFAULT mb-8">
+            <div className="flex items-center gap-2">
+              <Calendar className="text-accent-700" size={18} />
+              <span>{FLAGSHIP_PROGRAM.dates}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <MapPin className="text-accent-700" size={18} />
+              <span>{FLAGSHIP_PROGRAM.location}</span>
+            </div>
+          </div>
+          <Link
+            href={FLAGSHIP_PROGRAM_PATH}
+            className="inline-flex items-center bg-accent-700 hover:bg-accent-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-xl"
+          >
+            View Program & Register Interest
+            <Calendar className="ml-2" size={20} />
+          </Link>
         </motion.div>
       </Section>
 
