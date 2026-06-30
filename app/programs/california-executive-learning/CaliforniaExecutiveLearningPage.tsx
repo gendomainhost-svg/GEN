@@ -204,7 +204,9 @@ export default function CaliforniaExecutiveLearningPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-secondary-DEFAULT">
               Interested individuals and institutions are invited to submit an
-              Expression of Interest to receive:
+              Expression of Interest. Please provide your contact details, role,
+              and country so we can share program updates, registration information, participation requirements, fees, and
+              logistics as they become available.
             </p>
           </motion.div>
 

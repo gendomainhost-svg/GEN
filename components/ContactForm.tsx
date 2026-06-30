@@ -78,6 +78,8 @@ export default function ContactForm() {
   const inputClass =
     "w-full px-4 py-3 rounded-lg border border-primary-300 focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none";
 
+  const hintClass = "mt-1 text-xs text-secondary-DEFAULT";
+
   return (
     <div className="relative">
       <motion.form
@@ -87,6 +89,12 @@ export default function ContactForm() {
         onSubmit={handleSubmit}
         className="space-y-6"
       >
+        <p className="text-sm leading-relaxed text-secondary-DEFAULT">
+          Please share your name, email, and a brief message about your inquiry.
+          Tell us whether you are interested in a program, consulting support, or
+          a partnership opportunity. Fields marked with * are required.
+        </p>
+
         <div>
           <label
             htmlFor="name"
@@ -94,6 +102,7 @@ export default function ContactForm() {
           >
             Name *
           </label>
+          <p className={hintClass}>Your full name as it should appear on correspondence.</p>
           <input
             type="text"
             id="name"
@@ -102,7 +111,8 @@ export default function ContactForm() {
             autoComplete="name"
             value={formData.name}
             onChange={handleInputChange}
-            className={inputClass}
+            placeholder="e.g. Jane Doe"
+            className={`${inputClass} mt-2`}
           />
         </div>
 
@@ -113,6 +123,7 @@ export default function ContactForm() {
           >
             Email *
           </label>
+          <p className={hintClass}>A professional or work email we can use to reach you.</p>
           <input
             type="email"
             id="email"
@@ -121,7 +132,8 @@ export default function ContactForm() {
             autoComplete="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={inputClass}
+            placeholder="e.g. jane.doe@organization.gov"
+            className={`${inputClass} mt-2`}
           />
         </div>
 
@@ -132,6 +144,10 @@ export default function ContactForm() {
           >
             Message *
           </label>
+          <p className={hintClass}>
+            Describe your inquiry, the program or service you are interested in,
+            and any questions about participation, timing, or next steps.
+          </p>
           <textarea
             id="message"
             name="message"
@@ -140,8 +156,8 @@ export default function ContactForm() {
             minLength={10}
             value={formData.message}
             onChange={handleInputChange}
-            placeholder="How can we help?"
-            className={`${inputClass} resize-none`}
+            placeholder={`Example:\nI would like to learn more about GEN's open-enrollment programs and whether there are upcoming dates for executive training in the United States.`}
+            className={`${inputClass} mt-2 resize-none`}
           />
         </div>
 

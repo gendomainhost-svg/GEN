@@ -114,9 +114,14 @@ export default function ContactPage() {
               className="lg:col-span-2"
             >
               <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 md:p-12 shadow-2xl border border-primary-200">
-                <h2 className="font-serif text-3xl font-bold text-primary-900 mb-8">
+                <h2 className="font-serif text-3xl font-bold text-primary-900 mb-4">
                   Send Us a Message
                 </h2>
+                <p className="mb-8 text-secondary-DEFAULT leading-relaxed">
+                  Use the form below to contact GEN about programs, consulting,
+                  partnerships, or general inquiries. We will respond as soon as
+                  possible.
+                </p>
                 <ContactForm />
               </div>
             </motion.div>

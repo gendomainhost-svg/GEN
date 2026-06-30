@@ -12,11 +12,12 @@ import { FLAGSHIP_PROGRAM } from "@/app/data/flagshipProgram";
 const inputClass =
   "w-full px-4 py-3 rounded-lg border border-primary-300 focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none bg-white";
 
+const hintClass = "mt-1 text-xs text-secondary-DEFAULT";
+
 export default function ExpressionOfInterestForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    organization: "",
     jobTitle: "",
     country: "",
     message: "",
@@ -37,29 +38,42 @@ export default function ExpressionOfInterestForm() {
     setSubmitError(null);
     setIsSubmitting(true);
 
-    const defaultMessage = `Expression of Interest: ${FLAGSHIP_PROGRAM.shortTitle} (${FLAGSHIP_PROGRAM.dates})`;
+    const messageParts = [
+      `Expression of Interest: ${FLAGSHIP_PROGRAM.title}`,
+      `Proposed dates: ${FLAGSHIP_PROGRAM.dates}`,
+      `Location: ${FLAGSHIP_PROGRAM.location}`,
+    ];
+
+    if (formData.jobTitle.trim()) {
+      messageParts.push(`Job title: ${formData.jobTitle.trim()}`);
+    }
+    if (formData.country.trim()) {
+      messageParts.push(`Country: ${formData.country.trim()}`);
+    }
+    if (formData.message.trim()) {
+      messageParts.push("", "Additional information:", formData.message.trim());
+    }
 
     try {
       await sendContactEmail({
-        form_type: "individual",
+        form_type: "general",
         name: formData.name.trim(),
         from_name: formData.name.trim(),
         email: formData.email.trim(),
         reply_to: formData.email.trim(),
-        organization: formData.organization.trim(),
+        organization: "",
         job_title: formData.jobTitle.trim(),
         country: formData.country.trim(),
         program_interest: FLAGSHIP_PROGRAM.title,
         cohort_size: "",
         training_objectives: "",
-        subject: `EOI: ${FLAGSHIP_PROGRAM.shortTitle}`,
-        message: formData.message.trim() || defaultMessage,
+        subject: `Expression of Interest: ${FLAGSHIP_PROGRAM.shortTitle}`,
+        message: messageParts.join("\n"),
       });
       setShowSuccess(true);
       setFormData({
         name: "",
         email: "",
-        organization: "",
         jobTitle: "",
         country: "",
         message: "",
@@ -85,11 +99,18 @@ export default function ExpressionOfInterestForm() {
       onSubmit={handleSubmit}
       className="space-y-5"
     >
+      <p className="text-sm leading-relaxed text-secondary-DEFAULT">
+        Please share your contact details and professional background. This helps
+        us send program updates, registration information, and logistics as they
+        become available. Fields marked with * are required.
+      </p>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="eoi-name" className="mb-2 block text-sm font-medium text-primary-900">
             Full Name *
           </label>
+          <p className={hintClass}>Your full name as it should appear on correspondence.</p>
           <input
             type="text"
             id="eoi-name"
@@ -98,13 +119,15 @@ export default function ExpressionOfInterestForm() {
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
-            className={inputClass}
+            placeholder="e.g. Jane Doe"
+            className={`${inputClass} mt-2`}
           />
         </div>
         <div>
           <label htmlFor="eoi-email" className="mb-2 block text-sm font-medium text-primary-900">
             Email *
           </label>
+          <p className={hintClass}>A professional or work email we can use to reach you.</p>
           <input
             type="email"
             id="eoi-email"
@@ -113,27 +136,15 @@ export default function ExpressionOfInterestForm() {
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label htmlFor="eoi-organization" className="mb-2 block text-sm font-medium text-primary-900">
-            Organization
-          </label>
-          <input
-            type="text"
-            id="eoi-organization"
-            name="organization"
-            autoComplete="organization"
-            value={formData.organization}
-            onChange={handleChange}
-            className={inputClass}
+            placeholder="e.g. jane.doe@organization.gov"
+            className={`${inputClass} mt-2`}
           />
         </div>
         <div>
           <label htmlFor="eoi-jobTitle" className="mb-2 block text-sm font-medium text-primary-900">
             Job Title
           </label>
+          <p className={hintClass}>Your current role, position, or functional area.</p>
           <input
             type="text"
             id="eoi-jobTitle"
@@ -141,7 +152,8 @@ export default function ExpressionOfInterestForm() {
             autoComplete="organization-title"
             value={formData.jobTitle}
             onChange={handleChange}
-            className={inputClass}
+            placeholder="e.g. Director of Workforce Development"
+            className={`${inputClass} mt-2`}
           />
         </div>
       </div>
@@ -150,6 +162,9 @@ export default function ExpressionOfInterestForm() {
         <label htmlFor="eoi-country" className="mb-2 block text-sm font-medium text-primary-900">
           Country
         </label>
+        <p className={hintClass}>
+          Country of residence or the country your institution represents.
+        </p>
         <input
           type="text"
           id="eoi-country"
@@ -157,7 +172,8 @@ export default function ExpressionOfInterestForm() {
           autoComplete="country-name"
           value={formData.country}
           onChange={handleChange}
-          className={inputClass}
+          placeholder="e.g. Kenya"
+          className={`${inputClass} mt-2`}
         />
       </div>
 
@@ -165,14 +181,19 @@ export default function ExpressionOfInterestForm() {
         <label htmlFor="eoi-message" className="mb-2 block text-sm font-medium text-primary-900">
           Additional Information
         </label>
+        <p className={hintClass}>
+          Tell us whether you are applying individually or on behalf of an
+          institution, your learning priorities, expected number of participants,
+          and any questions about fees, travel, or logistics.
+        </p>
         <textarea
           id="eoi-message"
           name="message"
-          rows={4}
+          rows={5}
           value={formData.message}
           onChange={handleChange}
-          placeholder="Share any relevant background or questions about participation."
-          className={`${inputClass} resize-none`}
+          placeholder={`Example:\nI am a senior workforce development official interested in attending individually. I would like to learn more about registration fees, visa support, and whether institutional nominations are accepted.`}
+          className={`${inputClass} mt-2 resize-none`}
         />
       </div>
 
