@@ -1,8 +1,87 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 import Link from "next/link";
+import { ContactEmailError, sendContactEmail } from "@/lib/contactEmail";
+
+type SubscribeStatus = "idle" | "submitting" | "success" | "error";
+
+function NewsletterForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<SubscribeStatus>("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setError(null);
+
+    const address = email.trim();
+    try {
+      await sendContactEmail({
+        form_type: "general",
+        name: "Newsletter Subscriber",
+        from_name: "Newsletter Subscriber",
+        email: address,
+        reply_to: address,
+        organization: "",
+        job_title: "",
+        country: "",
+        program_interest: "",
+        cohort_size: "",
+        training_objectives: "",
+        subject: "Newsletter subscription",
+        message: `Please add ${address} to the GEN newsletter mailing list.`,
+      });
+      setStatus("success");
+      setEmail("");
+    } catch (err) {
+      console.error("Newsletter signup failed:", err);
+      setStatus("error");
+      setError(
+        err instanceof ContactEmailError
+          ? err.message
+          : "Something went wrong. Please try again or email us directly."
+      );
+    }
+  };
+
+  return (
+    <form className="space-y-3" onSubmit={handleSubmit}>
+      <label htmlFor="newsletter-email" className="sr-only">
+        Email address
+      </label>
+      <input
+        id="newsletter-email"
+        type="email"
+        required
+        autoComplete="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="you@organization.org"
+        className="w-full rounded-xl border border-primary-200 bg-primary-50/50 px-4 py-3 text-sm text-primary-900 placeholder:text-primary-400 focus:outline-none focus:ring-2 focus:ring-accent-500/40 focus:border-accent-400"
+      />
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent-700 px-5 py-3 text-sm font-semibold text-white shadow-accent-glow transition-all hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "submitting" ? "Subscribing..." : "Subscribe"}
+        {status !== "submitting" && <ArrowRight size={16} />}
+      </button>
+      <p role="status" aria-live="polite" className="text-sm">
+        {status === "success" && (
+          <span className="text-accent-800">
+            Thank you for subscribing. We&apos;ll be in touch.
+          </span>
+        )}
+        {status === "error" && <span className="text-red-700">{error}</span>}
+      </p>
+    </form>
+  );
+}
 
 const footerLinks = {
   programs: [
@@ -149,20 +228,7 @@ export default function Footer() {
                 Insights on institutional performance and global best
                 practices—delivered to your inbox.
               </p>
-              <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="you@organization.org"
-                  className="w-full rounded-xl border border-primary-200 bg-primary-50/50 px-4 py-3 text-sm text-primary-900 placeholder:text-primary-400 focus:outline-none focus:ring-2 focus:ring-accent-500/40 focus:border-accent-400"
-                />
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-accent-700 px-5 py-3 text-sm font-semibold text-white shadow-accent-glow transition-all hover:bg-accent-600"
-                >
-                  Subscribe
-                  <ArrowRight size={16} />
-                </button>
-              </form>
+              <NewsletterForm />
               <Link
                 href="/contact"
                 className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-700 hover:text-accent-600 transition-colors"
